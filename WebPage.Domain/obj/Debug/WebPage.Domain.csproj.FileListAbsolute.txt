@@ -1,0 +1,6 @@
+D:\AMDARIS\Webpage\WebPage.Domain\bin\Debug\WebPage.Domain.dll
+D:\AMDARIS\Webpage\WebPage.Domain\bin\Debug\WebPage.Domain.pdb
+D:\AMDARIS\Webpage\WebPage.Domain\obj\Debug\WebPage.Domain.csproj.AssemblyReference.cache
+D:\AMDARIS\Webpage\WebPage.Domain\obj\Debug\WebPage.Domain.csproj.CoreCompileInputs.cache
+D:\AMDARIS\Webpage\WebPage.Domain\obj\Debug\WebPage.Domain.dll
+D:\AMDARIS\Webpage\WebPage.Domain\obj\Debug\WebPage.Domain.pdb
