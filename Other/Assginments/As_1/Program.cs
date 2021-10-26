@@ -30,7 +30,7 @@ namespace As_1
             Shape.shapes += 1;
         }
     }
-    class Square : Shape ,ICloneable
+    class Square : Shape
     {
         private int len { get; set; }
 
@@ -44,11 +44,6 @@ namespace As_1
         {
             
             return this.len * this.len;
-        }
-
-        public object Clone()
-        {
-            throw new NotImplementedException();
         }
     }
     class Circle : Shape
