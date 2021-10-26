@@ -22,7 +22,6 @@ D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\staticwebassets\WebPage.API.Stat
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\staticwebassets\WebPage.API.StaticWebAssets.xml
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\scopedcss\bundle\WebPage.API.styles.css
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\WebPage.API.RazorTargetAssemblyInfo.cache
-D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\WebPage.API.csproj.CopyComplete
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\WebPage.API.dll
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\ref\WebPage.API.dll
 D:\AMDARIS\Webpage\WebPage.API\obj\Debug\net5.0\WebPage.API.pdb

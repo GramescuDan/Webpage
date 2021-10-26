@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebPage.Domain.Models
 {
-    class SCart
+    class ShoppingCart
     {
         public int Id {get;set;}
 
