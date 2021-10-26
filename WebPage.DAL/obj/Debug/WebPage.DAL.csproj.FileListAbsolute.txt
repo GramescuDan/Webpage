@@ -1,0 +1,6 @@
+D:\AMDARIS\Webpage\WebPage.DAL\bin\Debug\WebPage.DAL.dll
+D:\AMDARIS\Webpage\WebPage.DAL\bin\Debug\WebPage.DAL.pdb
+D:\AMDARIS\Webpage\WebPage.DAL\obj\Debug\WebPage.DAL.csproj.AssemblyReference.cache
+D:\AMDARIS\Webpage\WebPage.DAL\obj\Debug\WebPage.DAL.csproj.CoreCompileInputs.cache
+D:\AMDARIS\Webpage\WebPage.DAL\obj\Debug\WebPage.DAL.dll
+D:\AMDARIS\Webpage\WebPage.DAL\obj\Debug\WebPage.DAL.pdb
