@@ -11,8 +11,6 @@ namespace As_1
             RightAngle c = new RightAngle(4, 3);
             a.printshapes();
             Console.WriteLine("Square area: {0}\nCircle area: {1}\nRightAngle area {2}",a.areaCalculator(),b.areaCalculator(),c.areaCalculator());
-            
-
         }
     }
     abstract class Shape
@@ -32,7 +30,7 @@ namespace As_1
             Shape.shapes += 1;
         }
     }
-    class Square : Shape
+    class Square : Shape ,ICloneable
     {
         private int len { get; set; }
 
@@ -46,6 +44,11 @@ namespace As_1
         {
             
             return this.len * this.len;
+        }
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
         }
     }
     class Circle : Shape
