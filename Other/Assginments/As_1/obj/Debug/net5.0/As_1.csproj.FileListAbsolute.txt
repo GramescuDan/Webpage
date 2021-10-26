@@ -1,0 +1,16 @@
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.exe
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.deps.json
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.runtimeconfig.json
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.runtimeconfig.dev.json
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.dll
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\ref\As_1.dll
+D:\AMDARIS\Webpage\Other\Assginments\As_1\bin\Debug\net5.0\As_1.pdb
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.csproj.AssemblyReference.cache
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.GeneratedMSBuildEditorConfig.editorconfig
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.AssemblyInfoInputs.cache
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.AssemblyInfo.cs
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.csproj.CoreCompileInputs.cache
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.dll
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\ref\As_1.dll
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.pdb
+D:\AMDARIS\Webpage\Other\Assginments\As_1\obj\Debug\net5.0\As_1.genruntimeconfig.cache
