@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebPage.Domain.Models
 {
-    class faq
+    class SCart
     {
-        string question;
-        string answer;
+        public int Id {get;set;}
+
     }
 }

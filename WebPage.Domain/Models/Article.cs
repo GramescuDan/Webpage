@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WebPage.Domain.Models
 {
-    class news
+    class Article
     {
-        string title;
-        string description;
+        public string Title { get;set; }
+        public string Description { get; set; }
     }
 }
