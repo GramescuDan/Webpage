@@ -31,7 +31,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj": {
+                "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -69,6 +73,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj",
+        "projectName": "WebPage.Domain",
+        "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }
