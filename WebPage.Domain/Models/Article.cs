@@ -8,7 +8,7 @@ namespace WebPage.Domain.Models
 {
     class Article
     {
-        public string Title { get;set; }
+        public string Title { get; set; }
         public string Description { get; set; }
     }
 }
