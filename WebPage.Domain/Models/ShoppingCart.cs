@@ -10,5 +10,9 @@ namespace WebPage.Domain.Models
     {
         public int Id {get;set;}
 
+        public List<ShopItem> ItemsToBuy;
+
+        public Customer Buyer;
+
     }
 }

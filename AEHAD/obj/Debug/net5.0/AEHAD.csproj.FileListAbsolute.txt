@@ -1,0 +1,16 @@
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.exe
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.deps.json
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.runtimeconfig.json
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.runtimeconfig.dev.json
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.dll
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\ref\AEHAD.dll
+D:\AMDARIS\Webpage\AEHAD\bin\Debug\net5.0\AEHAD.pdb
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.csproj.AssemblyReference.cache
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.GeneratedMSBuildEditorConfig.editorconfig
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.AssemblyInfoInputs.cache
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.AssemblyInfo.cs
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.csproj.CoreCompileInputs.cache
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.dll
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\ref\AEHAD.dll
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.pdb
+D:\AMDARIS\Webpage\AEHAD\obj\Debug\net5.0\AEHAD.genruntimeconfig.cache

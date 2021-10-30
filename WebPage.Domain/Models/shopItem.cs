@@ -8,6 +8,7 @@ namespace WebPage.Domain.Models
 {
     class ShopItem
     {
+        public int id { get; set; }
         public int Stock { get; set; }
         public int Price { get; set; }
         public string NameItem { get; set; }
