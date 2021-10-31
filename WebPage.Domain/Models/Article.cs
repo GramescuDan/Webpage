@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebPage.Domain.Abstractions
+namespace WebPage.Domain.Models
 {
     class Article
     {
-        public int MaxLengthTitle = 0;
-        public int MaxLengthDescription = 0;
+        //0 is for faq and 1 is for news
+        public bool FaqOrNews { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
     }

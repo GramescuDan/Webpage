@@ -43,13 +43,13 @@
   <ItemGroup>
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Faq.cs" />
-    <Compile Include="Models\NewsArticle.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\ShopItem.cs" />
-    <Compile Include="Abstractions\Article.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
