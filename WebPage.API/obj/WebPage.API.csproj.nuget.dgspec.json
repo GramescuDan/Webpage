@@ -14,7 +14,7 @@
         "outputPath": "D:\\AMDARIS\\Webpage\\WebPage.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,7 +89,11 @@
         "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.DAL\\WebPage.DAL.csproj",
         "frameworks": {
           "net472": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj": {
+                "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj"
+              }
+            }
           }
         }
       },
@@ -101,12 +105,7 @@
       "restore": {
         "projectUniqueName": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj",
         "projectName": "WebPage.Domain",
-        "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj",
-        "frameworks": {
-          "net472": {
-            "projectReferences": {}
-          }
-        }
+        "projectPath": "D:\\AMDARIS\\Webpage\\WebPage.Domain\\WebPage.Domain.csproj"
       },
       "frameworks": {
         "net472": {}
