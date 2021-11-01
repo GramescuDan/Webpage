@@ -10,7 +10,7 @@ using WebPage.Domain.Models;
 
 namespace WebPage.DAL.Database
 {
-    public class DbContext: IdentityDbContext<User,Role,string>
+    public class DbContext: IdentityDbContext
     {
         public DbContext(DbContextOptions<DbContext> options): base(options)
         {

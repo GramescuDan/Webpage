@@ -8,7 +8,7 @@ using WebPage.Domain.Abstractions;
 
 namespace WebPage.DAL.Abstractions
 {
-    public interface IRepository<T> where T: class, IModel
+    public interface IRepository<T> where T: AbstractModel
     {
         Task<T> AddAsync([NotNull] T obj);
         Task<IEnumerable<T>> GetAsync();

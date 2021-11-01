@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WebPage.Domain.Abstractions
 {
-    public interface IModel
+    public abstract class AbstractModel
     {   
-        string id { get; set; }
+        public string id { get; set; }
     }
 }

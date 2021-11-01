@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebPage.Domain.Abstractions;
 
 namespace WebPage.Domain.Models
 {
-    public class Article
+    public class Article: AbstractModel
     {
         //0 is for faq and 1 is for news
         public bool FaqOrNews { get; set; }
