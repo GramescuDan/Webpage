@@ -4,20 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebPage.Domain.Models;
+using WebPage.DAL.Abstractions;
 
 namespace WebPage.API.Controllers
 {
     [Route("/api/[controller]")]
     public class ArticleController : Controller
     {
-        public ArticleController()
+        private readonly IRepository<Article> _repository;
+        public ArticleController(IRepository<Article> repository)
         {
-
+            _repository = repository;
         }
 
         [HttpGet]
-        public IActionResult Get()
-            {
-            }
+        public async Task<ActionResult<List<Article>>> Get()
+        {
+            return Ok((await _repository.GetAsync()).ToList);
+        }
     }
 }

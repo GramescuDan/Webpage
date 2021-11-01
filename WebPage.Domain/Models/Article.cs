@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebPage.Domain.Models
 {
-    class Article
+    public class Article
     {
         //0 is for faq and 1 is for news
         public bool FaqOrNews { get; set; }
