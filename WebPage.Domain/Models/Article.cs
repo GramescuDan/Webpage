@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebPage.Domain.Abstractions;
+﻿using WebPage.Domain.Abstractions;
 
 namespace WebPage.Domain.Models
 {
-    public class Article: AbstractModel
+    public class Article : AbstractModel
     {
         //0 is for faq and 1 is for news
         public bool FaqOrNews { get; set; }

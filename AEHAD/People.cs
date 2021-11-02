@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AEHAD
+﻿namespace AEHAD
 {
-    class People
+    internal class People
     {
-        public int Age {get; set;}
+        public int Age { get; set; }
         public string Name { get; set; }
-        
     }
 }

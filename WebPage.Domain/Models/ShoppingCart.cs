@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WebPage.Domain.Models
 {
-    class ShoppingCart
+    internal class ShoppingCart
     {
-        public int Id {get;set;}
-
-        public List<ShopItem> ItemsToBuy;
-
         public Customer Buyer;
 
+        public List<ShopItem> ItemsToBuy;
+        public int Id { get; set; }
     }
 }

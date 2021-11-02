@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPage.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 using WebPage.DAL.Abstractions;
+using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
 {
@@ -12,6 +12,7 @@ namespace WebPage.API.Controllers
     public class ArticleController : Controller
     {
         private readonly IRepository<Article> _repository;
+
         public ArticleController(IRepository<Article> repository)
         {
             _repository = repository;
@@ -22,6 +23,18 @@ namespace WebPage.API.Controllers
         {
             var result = await _repository.GetAsync();
             return Ok(result.ToList());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
+        {
+            if (entity is null)
+            {
+                throw new ArgumentNullException(paramName: nameof(entity), message: "Parameter is null!");
+            }
+
+            var newEntity = await _repository.AddAsync(entity);
+            return Created("Article",newEntity);
         }
     }
 }

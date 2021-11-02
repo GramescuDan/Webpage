@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebPage.Domain.Models
+﻿namespace WebPage.Domain.Models
 {
-    class Customer
+    internal class Customer
     {
         public int Age { get; set; }
         public string Name { get; set; }
@@ -17,6 +11,5 @@ namespace WebPage.Domain.Models
         public string Country { get; set; }
         public string Postalcode { get; set; }
         public Card card { get; set; }
-
     }
 }

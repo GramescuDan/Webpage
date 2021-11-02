@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebPage.Domain.Models
+﻿namespace WebPage.Domain.Models
 {
-    class ShopItem
+    internal class ShopItem
     {
         public int id { get; set; }
         public int Stock { get; set; }

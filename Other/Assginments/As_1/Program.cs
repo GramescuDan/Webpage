@@ -2,82 +2,91 @@
 
 namespace As_1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Square a = new Square(4);
-            Circle b = new Circle(3);
-            RightAngle c = new RightAngle(4, 3);
+            var a = new Square(4);
+            var b = new Circle(3);
+            var c = new RightAngle(4, 3);
             a.printshapes();
-            Console.WriteLine("Square area: {0}\nCircle area: {1}\nRightAngle area {2}",a.areaCalculator(),b.areaCalculator(),c.areaCalculator());
+            Console.WriteLine("Square area: {0}\nCircle area: {1}\nRightAngle area {2}", a.areaCalculator(),
+                b.areaCalculator(), c.areaCalculator());
         }
     }
-    abstract class Shape
-    {
-        private static int shapes = 0;
 
-        double areaCalculator()
+    internal abstract class Shape
+    {
+        private static int shapes;
+
+        private double areaCalculator()
         {
             return 0;
         }
+
         public void printshapes()
         {
             Console.WriteLine(shapes);
         }
+
         public void addshape()
         {
-            Shape.shapes += 1;
+            shapes += 1;
         }
     }
-    class Square : Shape
-    {
-        private int len { get; set; }
 
-        public Square(int len) : base()
+    internal class Square : Shape
+    {
+        public Square(int len)
         {
-            base.addshape();
+            addshape();
             this.len = len;
         }
 
+        private int len { get; }
+
         public double areaCalculator()
         {
-            
-            return this.len * this.len;
+            return len * len;
         }
     }
-    class Circle : Shape
+
+    internal class Circle : Shape
     {
-        private int rad { get; set; }
         public Circle(int rad)
         {
-            base.addshape();
+            addshape();
             this.rad = rad;
         }
+
+        private int rad { get; }
+
         public double areaCalculator()
         {
-            return this.rad * this.rad * 3.14;
+            return rad * rad * 3.14;
         }
+
         public double areaCalculator(double pi)
         {
-            return this.rad * this.rad * pi;
+            return rad * rad * pi;
         }
     }
-    class RightAngle : Shape
-    {
-        private int width { get; set; }
-        private int length { get; set; }
 
-        public RightAngle(int length,int width)
+    internal class RightAngle : Shape
+    {
+        public RightAngle(int length, int width)
         {
-            base.addshape();
+            addshape();
             this.length = length;
             this.width = width;
         }
-        
+
+        private int width { get; }
+        private int length { get; }
+
         public double areaCalculator()
         {
-            return this.length * this.width;
+            return length * width;
         }
     }
 }
