@@ -20,7 +20,8 @@ namespace WebPage.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Article>>> Get()
         {
-            return Ok((await _repository.GetAsync()).ToList);
+            var result = await _repository.GetAsync();
+            return Ok(result.ToList());
         }
     }
 }

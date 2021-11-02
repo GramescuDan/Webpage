@@ -8,6 +8,6 @@ namespace WebPage.Domain.Abstractions
 {
     public abstract class AbstractModel
     {   
-        public string id { get; set; }
+        public string Id { get; set; }
     }
 }
