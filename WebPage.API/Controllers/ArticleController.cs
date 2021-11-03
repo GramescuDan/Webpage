@@ -36,5 +36,13 @@ namespace WebPage.API.Controllers
             var newEntity = await _repository.AddAsync(entity);
             return Created("Article",newEntity);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<IEnumerable<Article>>> Delete(string id)
+        {
+
+            var newEntity = await _repository.DeleteAsync(id);
+            return Ok(newEntity);
+        }
     }
 }

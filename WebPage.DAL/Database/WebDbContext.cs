@@ -4,11 +4,11 @@ using WebPage.Domain.Models;
 
 namespace WebPage.DAL.Database
 {
-    public class DbContext : IdentityDbContext
+    public class WebDbContext : DbContext
     {
         public System.Data.Entity.DbSet<Article> Articles;
 
-        public DbContext(DbContextOptions<DbContext> options) : base(options)
+        public WebDbContext(DbContextOptions<WebDbContext> options) : base(options)
         {
         }
     }
