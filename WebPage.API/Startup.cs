@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using WebPage.DAL.Database;
 
 namespace WebPage.API
 {
@@ -24,6 +26,8 @@ namespace WebPage.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebPage.API", Version = "v1"});
             });
+            //not working yet adding dbcontext
+            //services.AddDbContext<WebDbContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
