@@ -9,8 +9,8 @@ namespace WebPage.DAL.Abstractions
     {
         Task<T> AddAsync([NotNull] T obj);
         Task<IEnumerable<T>> GetAsync();
-        Task<T> GetAsyncById([NotNull] string id);
+        Task<T> GetAsync([NotNull] string id);
         Task<T> DeleteAsync([NotNull] string id);
-        Task<IEnumerable<T>> DeleteAsyncByIds([NotNull] IEnumerable<string> ids);
+        Task<IEnumerable<T>> DeleteAsync([NotNull] IEnumerable<string> ids);
     }
 }

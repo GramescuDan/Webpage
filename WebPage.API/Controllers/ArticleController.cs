@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using WebPage.Domain.Models;
 namespace WebPage.API.Controllers
 {
     [Route("/api/[controller]")]
-    public class ArticleController : Controller
+    public class ArticleController : ControllerBase
     {
         private readonly IRepository<Article> _repository;
 
@@ -28,11 +29,7 @@ namespace WebPage.API.Controllers
         [HttpPost]
         public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
         {
-            if (entity is null)
-            {
-                throw new ArgumentNullException(paramName: nameof(entity), message: "Parameter is null!");
-            }
-
+            //de verif 
             var newEntity = await _repository.AddAsync(entity);
             return Created("Article",newEntity);
         }

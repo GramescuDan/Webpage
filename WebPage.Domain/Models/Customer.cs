@@ -1,6 +1,8 @@
-﻿namespace WebPage.Domain.Models
+﻿using WebPage.Domain.Abstractions;
+
+namespace WebPage.Domain.Models
 {
-    internal class Customer
+    internal class Customer : AbstractModel
     {
         public int Age { get; set; }
         public string Name { get; set; }
@@ -10,6 +12,6 @@
         public string Address { get; set; }
         public string Country { get; set; }
         public string Postalcode { get; set; }
-        public Card card { get; set; }
+        public Card CustomerCard { get; set; }
     }
 }

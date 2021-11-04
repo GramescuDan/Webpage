@@ -6,7 +6,7 @@ namespace WebPage.DAL.Database
 {
     public class WebDbContext : DbContext
     {
-        public System.Data.Entity.DbSet<Article> Articles;
+        public DbSet<Article> Articles;
 
         public WebDbContext(DbContextOptions<WebDbContext> options) : base(options)
         {

@@ -1,6 +1,8 @@
-﻿namespace WebPage.Domain.Models
+﻿using WebPage.Domain.Abstractions;
+
+namespace WebPage.Domain.Models
 {
-    internal class Card
+    internal class Card : AbstractModel
     {
         public string CardNumber { get; set; }
         public string ExpiryDate { get; set; }

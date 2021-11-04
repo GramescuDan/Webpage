@@ -1,8 +1,0 @@
-I added Text Here!Again
-
-I selected the changes i wanted to keep
-text conflict:	I edited a part of the file in my branch that wasn't in the project so i got a conflict.
-if the project needs my changes, at the conflict i would choose my part.
-	
-Deleted conflict: i edited a file that didn't exist in main.
-I add it again

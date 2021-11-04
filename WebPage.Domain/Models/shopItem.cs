@@ -1,8 +1,9 @@
-﻿namespace WebPage.Domain.Models
+﻿using WebPage.Domain.Abstractions;
+
+namespace WebPage.Domain.Models
 {
-    internal class ShopItem
+    internal class ShopItem : AbstractModel
     {
-        public int id { get; set; }
         public int Stock { get; set; }
         public int Price { get; set; }
         public string NameItem { get; set; }
