@@ -41,7 +41,15 @@ namespace WebPage.DAL.Database
 
         public async Task<T> DeleteAsync(string id)
         {
-            throw new System.NotImplementedException();
+            var obj = await DbSet.FirstOrDefaultAsync(ent =>ent.Id==id);
+            
+            if (obj == null)
+            {return null;}
+            
+            obj = DbSet.Remove(obj).Entity;
+            
+            await Save;
+            return obj;
         }
 
         public async Task<IEnumerable<T>> DeleteAsync(IEnumerable<string> ids)
