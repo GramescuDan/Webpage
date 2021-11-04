@@ -2,7 +2,7 @@
 
 namespace WebPage.Domain.Models
 {
-    internal class ShopItem : AbstractModel
+    public class ShopItem : AbstractModel
     {
         public int Stock { get; set; }
         public int Price { get; set; }

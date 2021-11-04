@@ -3,7 +3,7 @@ using WebPage.Domain.Abstractions;
 
 namespace WebPage.Domain.Models
 {
-    internal class ShoppingCart : AbstractModel
+    public class ShoppingCart : AbstractModel
     {
         public Customer Buyer;
 

@@ -2,7 +2,7 @@
 
 namespace WebPage.Domain.Models
 {
-    internal class Customer : AbstractModel
+    public class Customer : AbstractModel
     {
         public int Age { get; set; }
         public string Name { get; set; }

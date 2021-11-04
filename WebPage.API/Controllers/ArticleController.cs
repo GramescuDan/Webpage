@@ -20,16 +20,20 @@ namespace WebPage.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Article>>> Get()
+        public async Task<List<Article>> Get()
         {
-            var result = await _repository.GetAsync();
-            return Ok(result.ToList());
+            return (await _repository.GetAsync()).ToList();
         }
 
         [HttpPost]
         public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
         {
-            //de verif 
+            //de verif daca entity are completate campuri
+            try
+            {
+                
+            }
+            catch(Exception)
             var newEntity = await _repository.AddAsync(entity);
             return Created("Article",newEntity);
         }
@@ -37,7 +41,7 @@ namespace WebPage.API.Controllers
         [HttpDelete]
         public async Task<ActionResult<IEnumerable<Article>>> Delete(string id)
         {
-
+            //de verif daca obiectul de la id exista
             var newEntity = await _repository.DeleteAsync(id);
             return Ok(newEntity);
         }

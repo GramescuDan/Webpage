@@ -2,7 +2,7 @@
 
 namespace WebPage.Domain.Models
 {
-    internal class Card : AbstractModel
+    public class Card : AbstractModel
     {
         public string CardNumber { get; set; }
         public string ExpiryDate { get; set; }
