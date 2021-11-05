@@ -17,36 +17,36 @@ namespace WebPage.DAL.Database
             _context = context;
         }
 
-        public DbSet<T> DbSet => _dbSet ??= _context.Set<T>();
+        public DbSet<T> Dbset => _dbSet ??= _context.Set<T>();
         private Task<int> Save => _context.SaveChangesAsync();
         
         public async Task<T> AddAsync(T obj)
         {
             obj.Id = Guid.NewGuid().ToString();
 
-            obj = (await DbSet.AddAsync(obj)).Entity;
+            obj = (await Dbset.AddAsync(obj)).Entity;
             await Save;
             return obj;
         }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            return await DbSet.ToListAsync();
+            return await Dbset.ToListAsync();
         }
 
         public async Task<T> GetAsync(string objId)
         {
-            return await DbSet.FirstOrDefaultAsync(obj=> obj.Id == objId);
+            return await Dbset.FirstOrDefaultAsync(obj=> obj.Id == objId);
         }
 
         public async Task<T> DeleteAsync(string id)
         {
-            var obj = await DbSet.FirstOrDefaultAsync(ent =>ent.Id==id);
+            var obj = await Dbset.FirstOrDefaultAsync(ent =>ent.Id==id);
             
             if (obj == null)
             {return null;}
             
-            obj = DbSet.Remove(obj).Entity;
+            obj = Dbset.Remove(obj).Entity;
             
             await Save;
             return obj;
