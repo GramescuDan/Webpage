@@ -11,50 +11,40 @@ namespace WebPage.DAL.Database
     public class Repository<T> : IRepository<T> where T : AbstractModel
     {
         private readonly WebDbContext _context;
-        private DbSet<T> dbset;
+        private DbSet<T> dbSet;
 
         public Repository(WebDbContext context)
         {
             _context = context;
+            dbSet = context.Set<T>();
         }
-        
-        private Task<int> Save => _context.SaveChangesAsync();
         
         public async Task<T> AddAsync(T obj)
         {
-            obj.Id = Guid.NewGuid().ToString();
-
-            obj = (await _context.Set<T>().AddAsync(obj)).Entity;
-            await Save;
+            obj = (await dbSet.AddAsync(obj)).Entity;
             return obj;
         }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            return await dbset.ToListAsync();
+            return await dbSet.ToListAsync();
         }
 
         public async Task<T> GetAsync(string objId)
         {
-            return await dbset.FirstOrDefaultAsync(obj=> obj.Id == objId);
+            return await dbSet.FindAsync(objId);
         }
 
         public async Task<T> DeleteAsync(string id)
         {
-            var obj = await  _context.Set.FirstOrDefaultAsync(ent =>ent.Id==id);
+            var obj = await  dbSet.FindAsync(id);
             
             if (obj == null)
             {return null;}
             
-            obj =  _context.Set<T>().Remove(obj).Entity;
+            obj =  dbSet.Remove(obj).Entity;
             
-            await Save;
             return obj;
-        }
-
-        public async Task<IEnumerable<T>> DeleteAsync(IEnumerable<string> ids)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

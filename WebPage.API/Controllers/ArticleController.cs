@@ -26,35 +26,23 @@ namespace WebPage.API.Controllers
         [HttpGet]
         public async Task<List<Article>> Get()
         {
-            return (await _repository.GetAsync()).ToList();
+            return (await _unitOfWork.Articles.GetAsync()).ToList();
         }
         
         [HttpGet]
         public async Task<Article> Get(string id)
         {
-            return (await _repository.GetAsync(id));
+            return await _unitOfWork.Articles.GetAsync(id);
         }
 
         [HttpPost]
         public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
         {
-            //de verif daca entity are completate campuri
-            
-            /*try
-            {
-                if (entity.Description.Length <= 5)
-                {
-                  
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("");
-                throw;
-            }*/
-            
-            var newEntity = await _repository.AddAsync(entity);
-            return Created("Article",newEntity);
+                entity.Id = Guid.NewGuid().ToString();
+                await _unitOfWork.Articles.AddAsync(entity);
+                await _unitOfWork.CompleteAsync();
+
+                return CreatedAtAction("Get", new {entity.Id}, entity);
         }
 
         [HttpDelete]
@@ -62,7 +50,7 @@ namespace WebPage.API.Controllers
         {
             try
             {
-                var entity = await _repository.GetAsync(id);
+                var entity = await _unitOfWork.Articles.GetAsync(id);
             }
             catch (ArgumentNullException e)
             {
@@ -70,14 +58,15 @@ namespace WebPage.API.Controllers
                 throw;
             }
             
-            var newEntity = await _repository.DeleteAsync(id);
+            var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
+            await _unitOfWork.CompleteAsync();
             return Ok(newEntity);
         }
 
         [HttpPut]
-        public async Task<Article> Put(string id)
+        public async Task<Article> Put(string id,Article entity)
         {
-            
+            return null;
         }
     }
 }

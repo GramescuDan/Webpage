@@ -11,6 +11,6 @@ namespace WebPage.DAL.Abstractions.IRepositorys
         Task<IEnumerable<T>> GetAsync();
         Task<T> GetAsync([NotNull] string objId);
         Task<T> DeleteAsync([NotNull] string id);
-        Task<IEnumerable<T>> DeleteAsync([NotNull] IEnumerable<string> ids);
+        
     }
 }
