@@ -5,8 +5,7 @@ using WebPage.Domain.Models;
 namespace WebPage.DAL.Database
 {
     public class WebDbContext : DbContext
-    {
-
+    { 
         public WebDbContext(DbContextOptions<WebDbContext> options) : base(options)
         {
         }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebPage.DAL.Abstractions;
+using WebPage.DAL.Abstractions.IConfig;
+using WebPage.DAL.Abstractions.IRepositorys;
 using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
@@ -14,10 +16,11 @@ namespace WebPage.API.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IRepository<Article> _repository;
-
-        public ArticleController(IRepository<Article> repository)
+        private readonly IUnitOfWork _unitOfWork;
+        public ArticleController(IRepository<Article> repository,IUnitOfWork unitOfWork)
         {
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
@@ -69,6 +72,12 @@ namespace WebPage.API.Controllers
             
             var newEntity = await _repository.DeleteAsync(id);
             return Ok(newEntity);
+        }
+
+        [HttpPut]
+        public async Task<Article> Put(string id)
+        {
+            
         }
     }
 }

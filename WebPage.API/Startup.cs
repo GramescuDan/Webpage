@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Database;
 
 namespace WebPage.API
@@ -21,13 +22,16 @@ namespace WebPage.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //in functie de ce vrem sa folosim ca db setam options!
+            //services.AddDbContext<WebDbContext>(options =>)
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebPage.API", Version = "v1"});
             });
-            //not working yet adding dbcontext
-            //services.AddDbContext<WebDbContext>(options => options.UseSqlServer(connectionString));
+            //adding uow to the dependency inejction container
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

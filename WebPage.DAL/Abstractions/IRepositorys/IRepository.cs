@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using WebPage.Domain.Abstractions;
 
-namespace WebPage.DAL.Abstractions
+namespace WebPage.DAL.Abstractions.IRepositorys
 {
     public interface IRepository<T> where T : AbstractModel
     {

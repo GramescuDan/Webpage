@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions;
+using WebPage.DAL.Abstractions.IRepositorys;
 using WebPage.Domain.Abstractions;
 
 namespace WebPage.DAL.Database
@@ -10,43 +11,42 @@ namespace WebPage.DAL.Database
     public class Repository<T> : IRepository<T> where T : AbstractModel
     {
         private readonly WebDbContext _context;
-        private DbSet<T> _dbSet;
+        private DbSet<T> dbset;
 
         public Repository(WebDbContext context)
         {
             _context = context;
         }
-
-        public DbSet<T> Dbset => _dbSet ??= _context.Set<T>();
+        
         private Task<int> Save => _context.SaveChangesAsync();
         
         public async Task<T> AddAsync(T obj)
         {
             obj.Id = Guid.NewGuid().ToString();
 
-            obj = (await Dbset.AddAsync(obj)).Entity;
+            obj = (await _context.Set<T>().AddAsync(obj)).Entity;
             await Save;
             return obj;
         }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            return await Dbset.ToListAsync();
+            return await dbset.ToListAsync();
         }
 
         public async Task<T> GetAsync(string objId)
         {
-            return await Dbset.FirstOrDefaultAsync(obj=> obj.Id == objId);
+            return await dbset.FirstOrDefaultAsync(obj=> obj.Id == objId);
         }
 
         public async Task<T> DeleteAsync(string id)
         {
-            var obj = await Dbset.FirstOrDefaultAsync(ent =>ent.Id==id);
+            var obj = await  _context.Set.FirstOrDefaultAsync(ent =>ent.Id==id);
             
             if (obj == null)
             {return null;}
             
-            obj = Dbset.Remove(obj).Entity;
+            obj =  _context.Set<T>().Remove(obj).Entity;
             
             await Save;
             return obj;

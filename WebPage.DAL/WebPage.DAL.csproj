@@ -66,8 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IRepository.cs" />
-    <Compile Include="Database\Repository.cs" />
+    <Compile Include="Abstractions\IConfig\IUnitOfWork.cs" />
+    <Compile Include="Abstractions\IRepositorys\IArticleRepository.cs" />
+    <Compile Include="Abstractions\IRepositorys\IRepository.cs" />
+    <Compile Include="Database\Repositorys\ArticleRepository.cs" />
+    <Compile Include="Database\Repositorys\Repository.cs" />
+    <Compile Include="Database\UnitOfWork.cs" />
     <Compile Include="Database\WebDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
