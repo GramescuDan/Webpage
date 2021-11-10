@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using WebPage.DAL.Abstractions;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Abstractions.IRepositorys;
+using WebPage.DALL.Abstractions.IRepositorys;
 using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers

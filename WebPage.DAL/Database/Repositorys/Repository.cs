@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions;
 using WebPage.DAL.Abstractions.IRepositorys;
+using WebPage.DALL.Abstractions.IRepositorys;
 using WebPage.Domain.Abstractions;
+using WebPage.Domain.Models;
 
 namespace WebPage.DAL.Database
 {
-    public class Repository<T> : IRepository<T> where T : AbstractModel
+    public class Repository<T> : IRepository<T> where T : class, AbstractModel
     {
         private readonly WebDbContext _context;
         private DbSet<T> dbSet;

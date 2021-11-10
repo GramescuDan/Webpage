@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using WebPage.Domain.Abstractions;
 
-namespace WebPage.DAL.Abstractions.IRepositorys
+namespace WebPage.DALL.Abstractions.IRepositorys
 {
     public interface IRepository<T> where T : AbstractModel
     {
