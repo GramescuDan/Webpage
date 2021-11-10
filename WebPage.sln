@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleControllerTests", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPage.Services", "WebPage.Services\WebPage.Services.csproj", "{D9A0FFFE-A1E4-43B0-8875-655D0A0DB231}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPage.Domain_good", "WebPage.Domain_good\WebPage.Domain_good.csproj", "{838C7BB4-E856-4C56-8C47-B6B404C802FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPage.Domain", "WebPage.Domain\WebPage.Domain.csproj", "{838C7BB4-E856-4C56-8C47-B6B404C802FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

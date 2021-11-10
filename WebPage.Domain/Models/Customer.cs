@@ -1,4 +1,4 @@
-﻿using WebPage.Domain.Abstractions;
+﻿using WebPage.Domain_good.Abstractions;
 
 namespace WebPage.Domain.Models
 {
