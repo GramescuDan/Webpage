@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions;
@@ -24,7 +25,7 @@ namespace WebPage.DAL.Database
             obj = (await dbSet.AddAsync(obj)).Entity;
             return obj;
         }
-
+        //de vazut queryable
         public async Task<IEnumerable<T>> GetAsync()
         {
             return await dbSet.ToListAsync();

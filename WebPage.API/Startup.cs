@@ -23,7 +23,8 @@ namespace WebPage.API
         public void ConfigureServices(IServiceCollection services)
         {
             //in functie de ce vrem sa folosim ca db setam options!
-            //services.AddDbContext<WebDbContext>(options =>)
+            services.AddDbContext<WebDbContext>(
+                options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
