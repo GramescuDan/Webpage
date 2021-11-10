@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Abstractions.IRepositorys;
+using WebPage.DAL.Database.Repositorys;
 
 namespace WebPage.DAL.Database
 {

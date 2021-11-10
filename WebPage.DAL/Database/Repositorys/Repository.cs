@@ -1,17 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WebPage.DAL.Abstractions;
 using WebPage.DAL.Abstractions.IRepositorys;
-using WebPage.DALL.Abstractions.IRepositorys;
 using WebPage.Domain.Abstractions;
-using WebPage.Domain.Models;
 
-namespace WebPage.DAL.Database
+namespace WebPage.DAL.Database.Repositorys
 {
-    public class Repository<T> : IRepository<T> where T : class, AbstractModel
+    public class Repository<T> : IRepository<T> where T : AbstractModel
     {
         private readonly WebDbContext _context;
         private DbSet<T> dbSet;

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using WebPage.Domain.Abstractions;
 
-namespace WebPage.DALL.Abstractions.IRepositorys
+namespace WebPage.DAL.Abstractions.IRepositorys
 {
     public interface IRepository<T> where T : AbstractModel
     {
