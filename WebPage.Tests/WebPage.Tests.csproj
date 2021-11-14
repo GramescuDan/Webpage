@@ -9,15 +9,19 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FactoryBot" Version="1.5.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.12" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
         <PackageReference Include="NUnit" Version="3.13.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
         <PackageReference Include="coverlet.collector" Version="3.0.2" />
+        <PackageReference Include="xunit" Version="2.4.2-pre.12" />
+        <PackageReference Include="xunit.extensibility.core" Version="2.4.2-pre.12" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\WebPage.API\WebPage.API.csproj" />
       <ProjectReference Include="..\WebPage.DAL\WebPage.DAL.csproj" />
       <ProjectReference Include="..\WebPage.Domain\WebPage.Domain.csproj" />
     </ItemGroup>

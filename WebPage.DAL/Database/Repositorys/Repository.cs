@@ -9,7 +9,7 @@ namespace WebPage.DAL.Database.Repositorys
     public class Repository<T> : IRepository<T> where T : AbstractModel
     {
         private readonly WebDbContext _context;
-        private DbSet<T> dbSet;
+        protected readonly DbSet<T> dbSet;
 
         public Repository(WebDbContext context)
         {
@@ -17,23 +17,23 @@ namespace WebPage.DAL.Database.Repositorys
             dbSet = context.Set<T>();
         }
         
-        public async Task<T> AddAsync(T obj)
+        public virtual async Task<T> AddAsync(T obj)
         {
             obj = (await dbSet.AddAsync(obj)).Entity;
             return obj;
         }
         //de vazut queryable
-        public async Task<IEnumerable<T>> GetAsync()
+        public virtual async Task<IEnumerable<T>> GetAsync()
         {
             return await dbSet.ToListAsync();
         }
 
-        public async Task<T> GetAsync(string objId)
+        public virtual async Task<T> GetAsync(string objId)
         {
             return await dbSet.FindAsync(objId);
         }
 
-        public async Task<T> DeleteAsync(string id)
+        public virtual async Task<T> DeleteAsync(string id)
         {
             var obj = await  dbSet.FindAsync(id);
             

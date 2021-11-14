@@ -14,7 +14,7 @@ namespace WebPage.DAL.Database
         public UnitOfWork(WebDbContext context)
         {
             _context = context;
-            Articles = new ArticleRepository(context);
+            Articles = new ArticleRepository(_context);
         }
 
         public async Task CompleteAsync()

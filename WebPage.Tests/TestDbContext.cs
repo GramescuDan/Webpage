@@ -16,7 +16,7 @@ namespace Tests
                 .EnableSensitiveDataLogging()
                 .Options;
 
-            var Object = new WebDbContext(options);
+           Object = new WebDbContext(options);
 
             if (testData == null)
             {
