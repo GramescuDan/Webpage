@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebPage.DAL.Abstractions.IConfig;
-using WebPage.DAL.Abstractions.IRepositorys;
 using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
@@ -13,6 +12,7 @@ namespace WebPage.API.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public ArticleController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -23,7 +23,7 @@ namespace WebPage.API.Controllers
         {
             return (await _unitOfWork.Articles.GetAsync()).ToList();
         }
-        
+
         [HttpGet]
         public async Task<Article> Get(string id)
         {
@@ -33,11 +33,11 @@ namespace WebPage.API.Controllers
         [HttpPost]
         public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
         {
-                entity.Id = Guid.NewGuid().ToString();
-                await _unitOfWork.Articles.AddAsync(entity);
-                await _unitOfWork.CompleteAsync();
+            entity.Id = Guid.NewGuid().ToString();
+            await _unitOfWork.Articles.AddAsync(entity);
+            await _unitOfWork.CompleteAsync();
 
-                return CreatedAtAction("Get", new {entity.Id}, entity);
+            return CreatedAtAction("Get", new {entity.Id}, entity);
         }
 
         [HttpDelete]
@@ -49,17 +49,17 @@ namespace WebPage.API.Controllers
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("Article was null",e);
+                Console.WriteLine("Article was null", e);
                 throw;
             }
-            
+
             var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
             await _unitOfWork.CompleteAsync();
             return Ok(newEntity);
         }
 
         [HttpPut]
-        public async Task<Article> Put(string id,Article entity)
+        public async Task<Article> Put(string id, Article entity)
         {
             try
             {
@@ -69,12 +69,11 @@ namespace WebPage.API.Controllers
                 await _unitOfWork.CompleteAsync();
                 return entityToUpdate;
             }
-            catch(ArgumentNullException e)
+            catch (ArgumentNullException e)
             {
-                Console.WriteLine("Article was null",e);
+                Console.WriteLine("Article was null", e);
                 throw;
             }
-            
         }
     }
 }
