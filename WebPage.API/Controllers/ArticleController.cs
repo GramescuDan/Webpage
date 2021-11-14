@@ -61,7 +61,20 @@ namespace WebPage.API.Controllers
         [HttpPut]
         public async Task<Article> Put(string id,Article entity)
         {
-            return null;
+            try
+            {
+                var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
+                entityToUpdate.Description = entity.Description;
+                entityToUpdate.Title = entityToUpdate.Title;
+                await _unitOfWork.CompleteAsync();
+                return entityToUpdate;
+            }
+            catch(ArgumentNullException e)
+            {
+                Console.WriteLine("Article was null",e);
+                throw;
+            }
+            
         }
     }
 }
