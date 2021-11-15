@@ -1,17 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FactoryBot;
 using Microsoft.AspNetCore.Mvc;
-using NUnit.Framework;
 using WebPage.API.Controllers;
 using WebPage.DAL.Database;
 using WebPage.Domain.Models;
 using Xunit;
 using Assert = NUnit.Framework.Assert;
 
-namespace Tests
+namespace Tests.ControllerTests
 {
     public class ArticleControllerTest 
     {
@@ -29,8 +26,10 @@ namespace Tests
         {
 
             var result = await _controller.Get();
+            
             Assert.NotNull(result);
             Assert.AreEqual(TestData.Count(),result.Count());
+            Assert.AreEqual(TestData,result);
 
         }
         
@@ -38,8 +37,8 @@ namespace Tests
         public async void Get_returnsAnArticle()
         {
             var result = await _controller.Get(TestData.First().Id);
+            
             Assert.NotNull(result);
-
             Assert.AreEqual(TestData.First().Title,result.Title);
             Assert.AreEqual(TestData.First().Description,result.Description);
         }
@@ -54,21 +53,42 @@ namespace Tests
             };
             var actionresult = await _controller.Post(dummyArticle);
             var result = actionresult.Result as CreatedResult;
+            
             Assert.NotNull(result);
-
+            
             var resultValue = result.Value as Article;
+            
+            Assert.NotNull(resultValue);
             Assert.AreEqual(dummyArticle.Description,resultValue.Description);
             Assert.AreEqual(dummyArticle.Title,resultValue.Title);
         }
         [Fact]
-        public void Delete_deletesAnArticle()
+        public async void Delete_deletesAnArticle()
         {
-            Assert.Pass();
+            var dummyArticle = TestData.First();
+            var cnt = TestData.Count();
+            var result = await _controller.Delete(dummyArticle.Id);
+            
+            Assert.NotNull(result);
+            Assert.AreNotEqual(TestData.Count(),cnt);
+            
+            var valueResult = result.Value as Article;
+            var check = valueResult.Id;
+            
+            Assert.IsNull(await _controller.Get(check));
         }
         [Fact]
-        public void Put_updatesAnArticle()
+        public async void Put_updatesAnArticle()
         {
-            Assert.Pass();
+            var dummyArticle = TestData.First();
+            dummyArticle.Description = "This is a dummy article";
+            dummyArticle.Title = "Dummy article";
+
+            var result = await _controller.Put(TestData.First().Id, dummyArticle);
+            
+            Assert.NotNull(result);
+            Assert.AreEqual(TestData.First().Description,result.Description);
+            Assert.AreEqual(TestData.First().Title,result.Title);
         }
 
         private static IEnumerable<Article> _getTestData()

@@ -41,7 +41,7 @@ namespace WebPage.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult<IEnumerable<Article>>> Delete(string id)
+        public async Task<ActionResult<Article>> Delete(string id)
         {
             try
             {
@@ -68,12 +68,14 @@ namespace WebPage.API.Controllers
                 entityToUpdate.Title = entityToUpdate.Title;
                 await _unitOfWork.CompleteAsync();
                 return entityToUpdate;
+                
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("Article was null", e);
+                Console.WriteLine("Article not found", e);
                 throw;
             }
+            
         }
     }
 }
