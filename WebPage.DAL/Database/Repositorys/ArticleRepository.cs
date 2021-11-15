@@ -18,7 +18,7 @@ namespace WebPage.DAL.Database.Repositorys
         {
             try
             {
-                var entity = await dbSet.FindAsync(id);
+                var entity = await DbSet.FindAsync(id);
                 return entity;
             }
             catch (NullReferenceException exception)

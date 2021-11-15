@@ -31,13 +31,13 @@ namespace WebPage.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<IEnumerable<Article>>> Post(Article entity)
+        public async Task<ActionResult<Article>> Post(Article entity)
         {
             entity.Id = Guid.NewGuid().ToString();
-            await _unitOfWork.Articles.AddAsync(entity);
+            var newentity = await _unitOfWork.Articles.AddAsync(entity);
             await _unitOfWork.CompleteAsync();
 
-            return CreatedAtAction("Get", new {entity.Id}, entity);
+            return CreatedAtAction("Post", new {newentity.Id}, newentity);
         }
 
         [HttpDelete]
@@ -45,17 +45,15 @@ namespace WebPage.API.Controllers
         {
             try
             {
-                var entity = await _unitOfWork.Articles.GetAsync(id);
+                var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
+                await _unitOfWork.CompleteAsync();
+                return Ok(newEntity);
             }
             catch (ArgumentNullException e)
             {
                 Console.WriteLine("Article was null", e);
                 throw;
             }
-
-            var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
-            await _unitOfWork.CompleteAsync();
-            return Ok(newEntity);
         }
 
         [HttpPut]
