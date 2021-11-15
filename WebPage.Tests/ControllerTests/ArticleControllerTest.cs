@@ -76,7 +76,10 @@ namespace Tests.ControllerTests
             Assert.NotNull(result);
             var valueResult = result.Value as Article;
             
-            
+            Assert.NotNull(valueResult);
+            Assert.AreEqual(dummyArticle.Description,valueResult.Description);
+            Assert.AreEqual(dummyArticle.Title,valueResult.Title);
+
             //Assert.AreNotEqual(cnt,TestData.Count());
         }
 
