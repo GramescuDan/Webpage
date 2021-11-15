@@ -18,7 +18,7 @@ namespace Tests.ControllerTests
         private readonly ArticleController _controller;
 
 
-        public ArticleControllerTest(ITestOutputHelper outputHelper)
+        public ArticleControllerTest()
         {
             var unitOfWork = new UnitOfWork(new TestDbContext<Article>(TestData).Object);
             _controller = new ArticleController(unitOfWork);

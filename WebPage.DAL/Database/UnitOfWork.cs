@@ -10,11 +10,13 @@ namespace WebPage.DAL.Database
     {
         private readonly WebDbContext _context;
         public IArticleRepository Articles { get; private set; }
+        public IShopItemRepository ShopItems { get; private set; }
 
         public UnitOfWork(WebDbContext context)
         {
             _context = context;
             Articles = new ArticleRepository(_context);
+            ShopItems = new ShopItemRepository(_context);
         }
 
         public async Task CompleteAsync()

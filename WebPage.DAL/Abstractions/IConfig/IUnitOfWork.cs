@@ -6,7 +6,9 @@ namespace WebPage.DAL.Abstractions.IConfig
     public interface IUnitOfWork
     {
         IArticleRepository Articles { get; }
+        IShopItemRepository ShopItems { get; }
 
         Task CompleteAsync();
     }
+    
 }
