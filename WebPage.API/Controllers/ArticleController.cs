@@ -19,9 +19,9 @@ namespace WebPage.API.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Article>> Get()
+        public async Task<ActionResult<List<Article>>> Get()
         {
-            return (await _unitOfWork.Articles.GetAsync()).ToList();
+            return Ok((await _unitOfWork.Articles.GetAsync()).ToList());
         }
 
         [HttpGet]
@@ -60,23 +60,21 @@ namespace WebPage.API.Controllers
 
         [HttpPut]
         [Route ("{id}")]
-        public async Task<Article> Put(string id, [FromBody] Article entity)
+        public async Task<ActionResult<Article>> Put(string id, [FromBody] Article entity)
         {
-            try
+            var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
+            if (entityToUpdate == null)
             {
-                var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
+                return BadRequest();
+            }
+            else
+            {
                 entityToUpdate.Description = entity.Description;
-                entityToUpdate.Title = entityToUpdate.Title;
+                entityToUpdate.Title = entity.Title;
+                entityToUpdate.Type = entity.Type;
                 await _unitOfWork.CompleteAsync();
-                return entityToUpdate;
-                
+                return Ok(entityToUpdate); 
             }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("Article not found", e);
-                throw;
-            }
-            
         }
     }
 }
