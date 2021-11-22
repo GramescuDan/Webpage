@@ -57,19 +57,19 @@ namespace WebPage.API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<Article>> Delete(string id)//trebuie rescirsa
+        public async Task<ActionResult<Article>> Delete(string id)
         {
-            try
+            var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
+            if (newEntity == null)
             {
-                var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
+                return BadRequest();
+            }
+            else
+            {
                 await _unitOfWork.CompleteAsync();
-                return Ok(newEntity);
+                return Ok(newEntity); 
             }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("Article was null");
-                throw;
-            }
+
         }
 
         [HttpPut]
