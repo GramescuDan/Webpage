@@ -31,8 +31,22 @@ namespace WebPage.API.Controllers
             return await _unitOfWork.Articles.GetAsync(id);
         }
 
+        [HttpGet]
+        [Route("Faqs")]
+        public async Task<ActionResult<IQueryable<Article>>> GetFaq()
+        {
+            return Ok(await _unitOfWork.Articles.GetFaqsAsync());
+        }
+
+        [HttpGet]
+        [Route("News")]
+        public async Task<ActionResult<IQueryable<Article>>> GetNews()
+        {
+            return Ok(await _unitOfWork.Articles.GetNewsAsync());
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Article>> Post([FromBody]Article entity)
+        public async Task<ActionResult<Article>> Post([FromBody] Article entity)
         {
             entity.Id = Guid.NewGuid().ToString();
             var newentity = await _unitOfWork.Articles.AddAsync(entity);
@@ -42,8 +56,8 @@ namespace WebPage.API.Controllers
         }
 
         [HttpDelete]
-        [Route ("{id}")]
-        public async Task<ActionResult<Article>> Delete(string id)
+        [Route("{id}")]
+        public async Task<ActionResult<Article>> Delete(string id)//trebuie rescirsa
         {
             try
             {
@@ -53,13 +67,13 @@ namespace WebPage.API.Controllers
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("Article was null", e);
+                Console.WriteLine("Article was null");
                 throw;
             }
         }
 
         [HttpPut]
-        [Route ("{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Article>> Put(string id, [FromBody] Article entity)
         {
             var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
@@ -67,14 +81,12 @@ namespace WebPage.API.Controllers
             {
                 return BadRequest();
             }
-            else
-            {
-                entityToUpdate.Description = entity.Description;
-                entityToUpdate.Title = entity.Title;
-                entityToUpdate.Type = entity.Type;
-                await _unitOfWork.CompleteAsync();
-                return Ok(entityToUpdate); 
-            }
+
+            entityToUpdate.Description = entity.Description;
+            entityToUpdate.Title = entity.Title;
+            entityToUpdate.Type = entity.Type;
+            await _unitOfWork.CompleteAsync();
+            return Ok(entityToUpdate);
         }
     }
 }

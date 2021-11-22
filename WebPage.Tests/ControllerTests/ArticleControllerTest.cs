@@ -1,10 +1,11 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using FactoryBot;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NUnit.Framework.Internal;
+using Microsoft.EntityFrameworkCore;
 using WebPage.API.Controllers;
 using WebPage.DAL.Database;
 using WebPage.Domain.Enums;
@@ -17,12 +18,14 @@ namespace Tests.ControllerTests
 {
     public class ArticleControllerTest
     {
+        private readonly ITestOutputHelper _testOutputHelper;
         private static readonly IEnumerable<Article> TestData = _getTestData();
         private readonly ArticleController _controller;
 
 
-        public ArticleControllerTest()
+        public ArticleControllerTest(ITestOutputHelper testOutputHelper)
         {
+            _testOutputHelper = testOutputHelper;
             var unitOfWork = new UnitOfWork(new TestDbContext<Article>(TestData).Object);
             _controller = new ArticleController(unitOfWork);
         }
@@ -55,11 +58,47 @@ namespace Tests.ControllerTests
             Assert.AreEqual(TestData.First().Description, result.Description);
             Assert.AreEqual(TestData.First().Type, result.Type);
         }
+        
+        [Fact]
+        public async void GetFaq_returnsOnlyFaqs()
+        {
+            var actionResult = await _controller.GetFaq();
+            Assert.NotNull(actionResult);
+
+            var result = actionResult.Result as OkObjectResult;
+            Assert.NotNull(result);
+            Assert.AreEqual(StatusCodes.Status200OK,result.StatusCode);
+
+            var value = result.Value as IQueryable<Article>;
+            Assert.NotNull(value);
+
+            var list = value.ToList();
+            Assert.NotNull(list);
+            Assert.IsFalse(TestData.Count() == list.Count);
+        }
+        
+        [Fact]
+        public async void GetFaq_returnsOnlyNews()
+        {
+            var actionResult = await _controller.GetNews();
+            Assert.NotNull(actionResult);
+
+            var result = actionResult.Result as OkObjectResult;
+            Assert.NotNull(result);
+            Assert.AreEqual(StatusCodes.Status200OK,result.StatusCode);
+
+            var value = result.Value as IQueryable<Article>;
+            Assert.NotNull(value);
+
+            var list = value.ToList();
+            Assert.NotNull(list);
+            Assert.IsFalse(TestData.Count() == list.Count);
+        }
+        
 
         [Fact]
         public async void Post_addsToTheDatabaseAnFaqAndAnNewsArticle()
         {
-            var cnt = TestData.Count();
             var dummyArticle = new Article
             {
                 Description = "This is a dummy article",
@@ -104,7 +143,6 @@ namespace Tests.ControllerTests
         public async void Delete_deletesAnArticle()
         {
             var dummyArticle = TestData.First();
-            var cnt = TestData.Count();
             var entity = await _controller.Delete(dummyArticle.Id);
             var result = entity.Result as OkObjectResult;
             
@@ -134,7 +172,7 @@ namespace Tests.ControllerTests
             Assert.AreEqual(StatusCodes.Status200OK,result.StatusCode);
 
             var value = result.Value as Article;
-            
+            Assert.NotNull(value);
             Assert.AreEqual(TestData.First().Description, value.Description);
             Assert.AreEqual(TestData.First().Title, value.Title);
             Assert.AreEqual(TestData.First().Type, value.Type);
