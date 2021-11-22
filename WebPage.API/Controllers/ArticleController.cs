@@ -8,6 +8,7 @@ using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
 {
+    [ApiController]
     [Route("/api/[controller]")]
     public class ArticleController : ControllerBase
     {
