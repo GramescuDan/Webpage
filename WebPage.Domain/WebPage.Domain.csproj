@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>WebPage.Domain_good</RootNamespace>
+        <RootNamespace>WebPage.Domain</RootNamespace>
     </PropertyGroup>
 
 </Project>

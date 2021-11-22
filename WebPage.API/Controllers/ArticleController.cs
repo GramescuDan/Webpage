@@ -25,22 +25,24 @@ namespace WebPage.API.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public async Task<Article> Get(string id)
         {
             return await _unitOfWork.Articles.GetAsync(id);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Article>> Post(Article entity)
+        public async Task<ActionResult<Article>> Post([FromBody]Article entity)
         {
             entity.Id = Guid.NewGuid().ToString();
             var newentity = await _unitOfWork.Articles.AddAsync(entity);
             await _unitOfWork.CompleteAsync();
 
-            return CreatedAtAction("Post", new {newentity.Id}, newentity);
+            return CreatedAtAction("Get", new {newentity.Id}, newentity);
         }
 
         [HttpDelete]
+        [Route ("{id}")]
         public async Task<ActionResult<Article>> Delete(string id)
         {
             try
@@ -57,7 +59,8 @@ namespace WebPage.API.Controllers
         }
 
         [HttpPut]
-        public async Task<Article> Put(string id, Article entity)
+        [Route ("{id}")]
+        public async Task<Article> Put(string id, [FromBody] Article entity)
         {
             try
             {
