@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions.IRepositorys;
 using WebPage.Domain.Abstractions;
-using WebPage.Domain.Models;
+
 
 namespace WebPage.DAL.Database.Repositorys
 {

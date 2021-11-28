@@ -25,22 +25,19 @@ namespace WebPage.API.Controllers
             return Ok((await _unitOfWork.Articles.GetAsync()).ToList());
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}")]
         public async Task<Article> Get(string id)
         {
             return await _unitOfWork.Articles.GetAsync(id);
         }
 
-        [HttpGet]
-        [Route("Faqs")]
+        [HttpGet("Faqs")]
         public async Task<ActionResult<IQueryable<Article>>> GetFaq()
         {
             return Ok(await _unitOfWork.Articles.GetFaqsAsync());
         }
 
-        [HttpGet]
-        [Route("News")]
+        [HttpGet("News")]
         public async Task<ActionResult<IQueryable<Article>>> GetNews()
         {
             return Ok(await _unitOfWork.Articles.GetNewsAsync());
@@ -56,8 +53,7 @@ namespace WebPage.API.Controllers
             return CreatedAtAction("Get", new {newentity.Id}, newentity);
         }
 
-        [HttpDelete]
-        [Route("{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Article>> Delete(string id)
         {
             var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
@@ -65,16 +61,11 @@ namespace WebPage.API.Controllers
             {
                 return BadRequest();
             }
-            else
-            {
-                await _unitOfWork.CompleteAsync();
-                return Ok(newEntity); 
-            }
-
+            await _unitOfWork.CompleteAsync();
+            return Ok(newEntity);
         }
 
-        [HttpPut]
-        [Route("{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Article>> Put(string id, [FromBody] Article entity)
         {
             var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
