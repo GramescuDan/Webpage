@@ -1,6 +1,8 @@
+using WebPage.Domain.Models.SendGrid;
+
 namespace WebPage.DAL.Abstractions.IRepositorys
 {
-    public interface ISubscriberRepository
+    public interface ISubscriberRepository:IRepository<Subscriber>
     {
         
     }

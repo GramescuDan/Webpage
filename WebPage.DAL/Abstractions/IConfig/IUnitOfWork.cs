@@ -7,6 +7,7 @@ namespace WebPage.DAL.Abstractions.IConfig
     {
         IArticleRepository Articles { get; }
         IShopItemRepository ShopItems { get; }
+        ISubscriberRepository Subscribers { get; }
 
         Task CompleteAsync();
     }

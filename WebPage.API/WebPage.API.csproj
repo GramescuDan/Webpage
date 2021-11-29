@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WebPage.DAL\WebPage.DAL.csproj" />
     <ProjectReference Include="..\WebPage.Domain\WebPage.Domain.csproj" />
+    <ProjectReference Include="..\WebPage.Infrastructure\WebPage.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Database;
+using WebPage.Infrastructure.SendGrid;
 
 namespace WebPage.API
 {
@@ -32,6 +33,7 @@ namespace WebPage.API
             });
             //adding uow to the dependency inejction container
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<Client>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

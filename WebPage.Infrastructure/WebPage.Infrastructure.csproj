@@ -11,4 +11,9 @@
     <PackageReference Include="System.Interactive.Async" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebPage.DAL\WebPage.DAL.csproj" />
+    <ProjectReference Include="..\WebPage.Domain\WebPage.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
