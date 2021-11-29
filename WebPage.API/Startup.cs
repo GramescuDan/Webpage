@@ -25,7 +25,7 @@ namespace WebPage.API
         {
             //in functie de ce vrem sa folosim ca db setam options!
             services.AddDbContext<WebDbContext>(
-                options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("WebPage.API")));
             
             services.AddControllers();
             services.AddSwaggerGen(c =>

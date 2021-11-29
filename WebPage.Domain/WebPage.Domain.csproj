@@ -5,4 +5,8 @@
         <RootNamespace>WebPage.Domain</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SendGrid" Version="9.25.0" />
+    </ItemGroup>
+
 </Project>

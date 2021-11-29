@@ -1,4 +1,6 @@
-﻿namespace WebPage.Domain.Abstractions
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebPage.Domain.Abstractions
 {
     public abstract class AbstractModel
     {

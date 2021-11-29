@@ -50,7 +50,7 @@ namespace WebPage.API.Controllers
             var newentity = await _unitOfWork.Articles.AddAsync(entity);
             await _unitOfWork.CompleteAsync();
 
-            return CreatedAtAction("Get", new {newentity.Id}, newentity);
+            return Created("http://localhost:5000/Article/Get", newentity);
         }
 
         [HttpDelete("{id}")]
