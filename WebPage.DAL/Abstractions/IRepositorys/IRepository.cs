@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using WebPage.Domain.Abstractions;
-using WebPage.Domain.Models;
+
 
 namespace WebPage.DAL.Abstractions.IRepositorys
 {

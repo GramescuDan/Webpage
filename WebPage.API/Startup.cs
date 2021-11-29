@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Database;
@@ -23,9 +22,8 @@ namespace WebPage.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //in functie de ce vrem sa folosim ca db setam options!
             services.AddDbContext<WebDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("WebPage.API")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
