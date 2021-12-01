@@ -20,13 +20,7 @@ namespace Tests.ControllerTests
             var unitOfWork = new UnitOfWork(new TestDbContext<ShopItem>(TestData).Object);
             _controller = new ShopItemController(unitOfWork);
         }
-
-        [Fact]
-        public async void Get_returnsAListOfItems()
-        {
-
-
-        }
+        
 
 
 

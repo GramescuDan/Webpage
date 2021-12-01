@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebPage.Domain.Models.SendGrid
 {
-    public class Email
+    public class ElectronicMailTemplate
     {
         [Required]
         public string Subject { get; set; } 
@@ -10,7 +10,7 @@ namespace WebPage.Domain.Models.SendGrid
         public string HtmlContent { get; set; }
 
 
-        public Email(string subject,string plaintextcontent,string htmlContent)
+        public ElectronicMailTemplate(string subject,string plaintextcontent,string htmlContent)
         {
             Subject = subject;
             PlainTextContent = plaintextcontent;

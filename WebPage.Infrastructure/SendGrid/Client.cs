@@ -1,36 +1,55 @@
+using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using WebPage.DAL.Abstractions.IConfig;
+using WebPage.DAL.Database;
 using WebPage.Domain.Models.SendGrid;
 
 namespace WebPage.Infrastructure.SendGrid
 {
-    public sealed class Client
+    public class Client:IClient
     {
         private readonly IUnitOfWork _unitOfWork;
-    
-        public Client(IUnitOfWork unitOfWork)
+        //Bad Practice.
+        private readonly string _apiKey = "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";
+        private readonly SendGridClient _client;
+        private readonly EmailAddress _from;
+        private readonly IServiceProvider _serviceProvider;
+
+        public Client(IServiceProvider serviceProvider)
         {
-            _unitOfWork = unitOfWork;
+            _serviceProvider = serviceProvider;
+            _client = new SendGridClient(_apiKey);
+            _from = new EmailAddress("gramescudan444@gmail.com", "Grămescus Team");
         }
 
-        public async Task Send()
+        public async Task Send(ElectronicMailTemplate electronicMailTemplate)
         {
-            
+            var subscribers = await Get();
+            foreach (var subscriber in subscribers)
+            {
+                var email = new EmailAddress(subscriber.Email);
+                var message = MailHelper.CreateSingleEmail(_from, email, electronicMailTemplate.Subject, electronicMailTemplate.PlainTextContent,
+                    electronicMailTemplate.HtmlContent);
+                var response = await _client.SendEmailAsync(message);
+            }
         }
 
-        public async Task<Email> Compose(string subject,string plaintextcontent,string htmlContent)
+        public ElectronicMailTemplate Compose(string subject,string plaintextcontent,string htmlContent)
         {
-            var emailtosend = new Email(subject,plaintextcontent,htmlContent);
+            var emailtosend = new ElectronicMailTemplate(subject,plaintextcontent,htmlContent);
             return emailtosend;
         }
 
         private async Task<List<Subscriber>> Get()
         {
-            return (await _unitOfWork.Subscribers.GetAsync()).ToList();
+            using var scope = _serviceProvider.CreateScope();
+            var unitofwork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+            return (await unitofwork.Subscribers.GetAsync()).ToList();
         }
     }
 }

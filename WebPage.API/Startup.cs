@@ -33,7 +33,7 @@ namespace WebPage.API
             });
             //adding uow to the dependency inejction container
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton<Client>();
+            services.AddSingleton<IClient,Client>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +53,7 @@ namespace WebPage.API
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseDeveloperExceptionPage();
         }
     }
 }
