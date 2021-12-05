@@ -32,7 +32,7 @@ namespace WebPage.API.Controllers
         [HttpGet]
         public async Task Send()
         {
-            var email = _client.Compose("This is a test", null, null);
+            var email = _client.Compose("This is a test", "null", null);
             await _client.Send(email);
         }
         
