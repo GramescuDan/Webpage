@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,16 +31,16 @@ namespace WebPage.DAL.Database.Repositorys
         }
 
 
-        public async Task<IQueryable> GetFaqsAsync()
+        public async Task<List<Article>> GetFaqsAsync()
         {
             var list = await DbSet.ToListAsync();
-            return list.AsQueryable().Where(x => x.Type == ArticleEnum.Faq);
+            return (list.AsQueryable().Where(x => x.Type == ArticleEnum.Faq)).ToList();
         }
 
-        public async Task<IQueryable> GetNewsAsync()
+        public async Task<List<Article>> GetNewsAsync()
         {
             var list = await DbSet.ToListAsync();
-            return list.AsQueryable().Where(x => x.Type == ArticleEnum.News);
+            return (list.AsQueryable().Where(x => x.Type == ArticleEnum.News)).ToList();
         }
     }
 }

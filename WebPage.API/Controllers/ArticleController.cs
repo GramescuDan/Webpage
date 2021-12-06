@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.Domain.Dtos;
 using WebPage.Domain.Models;
@@ -39,15 +39,21 @@ namespace WebPage.API.Controllers
         }
 
         [HttpGet("Faqs")]
-        public async Task<ActionResult<IQueryable<Article>>> GetFaq()
+        public async Task<ActionResult<IQueryable<ArticleDto>>> GetFaq()
         {
-            return Ok(await _unitOfWork.Articles.GetFaqsAsync());
+            var result = await _unitOfWork.Articles.GetFaqsAsync();
+            if (result == null)
+                return Ok(new List<ArticleDto>());
+            return Ok(_mapper.Map<List<ArticleDto>>(result));
         }
 
         [HttpGet("News")]
-        public async Task<ActionResult<IQueryable<Article>>> GetNews()
+        public async Task<ActionResult<IQueryable<ArticleDto>>> GetNews()
         {
-            return Ok(await _unitOfWork.Articles.GetNewsAsync());
+            var result = await _unitOfWork.Articles.GetNewsAsync();
+            if (result == null)
+                return Ok(new List<ArticleDto>());
+            return Ok(_mapper.Map<List<ArticleDto>>(result));
         }
 
         [HttpPost]
@@ -57,7 +63,7 @@ namespace WebPage.API.Controllers
             var newentity = await _unitOfWork.Articles.AddAsync(entity);
             await _unitOfWork.CompleteAsync();
 
-            return Created("http://localhost:5000/Article/Get", newentity);
+            return Created("http://localhost:5000/Article/Get", _mapper.Map<ArticleDto>(newentity));
         }
 
         [HttpDelete("{id}")]
