@@ -39,9 +39,9 @@ namespace WebPage.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ShopItemDto>> Post([FromBody] ShopItemDto Item)
+        public async Task<ActionResult<ShopItemDto>> Post([FromBody] ShopItemDto item)
         {
-            var newitem = _mapper.Map<ShopItem>(Item);
+            var newitem = _mapper.Map<ShopItem>(item);
             var entity = await _unitOfWork.ShopItems.AddAsync(newitem);
             await _unitOfWork.CompleteAsync();
             return Created("localhost", _mapper.Map<ShopItemDto>(entity));
