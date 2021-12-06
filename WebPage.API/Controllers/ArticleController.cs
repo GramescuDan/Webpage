@@ -72,7 +72,7 @@ namespace WebPage.API.Controllers
             var newEntity = await _unitOfWork.Articles.DeleteAsync(id);
             if (newEntity == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid Id");
             }
             await _unitOfWork.CompleteAsync();
             return Ok(newEntity);
@@ -84,7 +84,7 @@ namespace WebPage.API.Controllers
             var entityToUpdate = await _unitOfWork.Articles.GetAsync(id);
             if (entityToUpdate == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid Id");
             }
 
             entityToUpdate.Description = entity.Description;
