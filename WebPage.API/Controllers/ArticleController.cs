@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions.IConfig;
+using WebPage.Domain.Dtos;
 using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
@@ -13,22 +16,26 @@ namespace WebPage.API.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ArticleController(IUnitOfWork unitOfWork)
+        public ArticleController(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Article>>> Get()
+        public async Task<ActionResult<List<ArticleDto>>> Get()
         {
-            return Ok((await _unitOfWork.Articles.GetAsync()).ToList());
+            var results = (await _unitOfWork.Articles.GetAsync()).ToList();
+            return Ok(_mapper.Map<List<ArticleDto>>(results));
         }
 
         [HttpGet("{id}")]
-        public async Task<Article> Get(string id)
+        public async Task<ArticleDto> Get(string id)
         {
-            return await _unitOfWork.Articles.GetAsync(id);
+            var entity = await _unitOfWork.Articles.GetAsync(id);
+            return _mapper.Map<ArticleDto>(entity);
         }
 
         [HttpGet("Faqs")]
