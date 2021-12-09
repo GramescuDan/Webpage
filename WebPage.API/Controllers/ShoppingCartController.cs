@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -7,25 +8,38 @@ using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ShoppingCartController : ControllerBase
+    public class ShoppingCartController : GenericController
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
 
-
-        public ShoppingCartController(IMapper mapper, IUnitOfWork unitOfWork)
+        public ShoppingCartController(IMapper mapper, IUnitOfWork unitOfWork):base(mapper,unitOfWork)
         {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
-        public async Task<ShoppingCart> GetShoppingCart(string id)
+        public async Task<ActionResult<ShoppingCart>> Get(string customerId)
         {
-            var queryable = _unitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer);
-            return await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == id);
+            var buyer = await UnitOfWork.Customers.GetAsync(customerId);
+            if (buyer == null)
+            {
+                return BadRequest("BUYER IS NULL!");
+            }
+            //.ThenInclude(buyer=>buyer.Card)
+            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart=>cart.Items);
+            var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
+            if (shoppingCart == null)
+            {
+                shoppingCart = new ShoppingCart
+                {
+                    Buyer = buyer,
+                    Quantity = 0,
+                    TotalPrice = 0,
+                    Items = new List<ShopItem>()
+                };
+                shoppingCart = await UnitOfWork.ShoppingCarts.AddAsync(shoppingCart);
+                await UnitOfWork.CompleteAsync();
+            }
+
+            return Ok(shoppingCart);
         }
 
         /*[HttpPost("{id}")]
