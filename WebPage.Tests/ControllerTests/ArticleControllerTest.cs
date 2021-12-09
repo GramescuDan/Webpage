@@ -56,7 +56,6 @@ namespace Tests.ControllerTests
             Assert.NotNull(result);
             Assert.AreEqual(TestData.First().Title, result.Title);
             Assert.AreEqual(TestData.First().Description, result.Description);
-            Assert.AreEqual(TestData.First().Type, result.Type);
         }
         
         [Fact]

@@ -1,18 +1,14 @@
 using System;
 using System.Threading.Tasks;
 using WebPage.DAL.Abstractions.IConfig;
-using WebPage.DAL.Abstractions.IRepositorys;
-using WebPage.DAL.Database.Repositorys;
-using WebPage.Domain.Models.SendGrid;
+using WebPage.DAL.Abstractions.IRepositories;
+using WebPage.DAL.Database.Repositories;
 
 namespace WebPage.DAL.Database
 {
-    public class UnitOfWork: IUnitOfWork,IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly WebDbContext _context;
-        public IArticleRepository Articles { get; private set; }
-        public IShopItemRepository ShopItems { get; private set; }
-        public ISubscriberRepository Subscribers { get; private set; }
 
         public UnitOfWork(WebDbContext context)
         {
@@ -20,17 +16,25 @@ namespace WebPage.DAL.Database
             Articles = new ArticleRepository(_context);
             ShopItems = new ShopItemRepository(_context);
             Subscribers = new SubscriberRepository(_context);
+            ShoppingCarts = new ShoppingCartRepository(_context);
+            Customers = new CustomerRepository(_context);
         }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
+        public IShoppingCartRepository ShoppingCarts { get; private set; }
+        public IArticleRepository Articles { get; }
+        public IShopItemRepository ShopItems { get; }
+        public ISubscriberRepository Subscribers { get; }
+        
+        public ICustomerRepository Customers { get; }
 
         public async Task CompleteAsync()
         {
             await _context.SaveChangesAsync();
         }
-        
-        public  void Dispose()
-        { 
-            _context.Dispose();
-        }
-        
     }
 }

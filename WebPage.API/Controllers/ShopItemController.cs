@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,6 +43,7 @@ namespace WebPage.API.Controllers
         public async Task<ActionResult<ShopItemDto>> Post([FromBody] ShopItemDto item)
         {
             var newitem = _mapper.Map<ShopItem>(item);
+            newitem.Id = Guid.NewGuid().ToString();
             var entity = await _unitOfWork.ShopItems.AddAsync(newitem);
             await _unitOfWork.CompleteAsync();
             return Created("localhost", _mapper.Map<ShopItemDto>(entity));

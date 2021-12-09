@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WebPage.Domain.Models;
 
-namespace WebPage.DAL.Abstractions.IRepositorys
+namespace WebPage.DAL.Abstractions.IRepositories
 {
     public interface IArticleRepository:IRepository<Article>
     {

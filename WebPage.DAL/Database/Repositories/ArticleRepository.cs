@@ -4,11 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WebPage.DAL.Abstractions.IRepositorys;
+using WebPage.DAL.Abstractions.IRepositories;
 using WebPage.Domain.Enums;
 using WebPage.Domain.Models;
 
-namespace WebPage.DAL.Database.Repositorys
+namespace WebPage.DAL.Database.Repositories
 {
     public class ArticleRepository: Repository<Article>,IArticleRepository
     {
