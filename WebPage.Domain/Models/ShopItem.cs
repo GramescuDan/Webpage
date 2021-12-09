@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 using WebPage.Domain.Abstractions;
 
 namespace WebPage.Domain.Models
@@ -13,7 +14,6 @@ namespace WebPage.Domain.Models
         public string NameItem { get; set; }
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
-
         public ICollection<ShoppingCart> Carts { get; set; }
     }
 }

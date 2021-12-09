@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebPage.DAL.Abstractions.IConfig;
+using WebPage.Domain.Dtos;
 using WebPage.Domain.Models;
 
 namespace WebPage.API.Controllers
@@ -31,7 +32,8 @@ namespace WebPage.API.Controllers
                 return NotFound("Missing ShoppingCart!");
             }
 
-            return Ok(shoppingCart);
+            
+            return Ok(Mapper.Map<ShoppingCartDto>(shoppingCart));
         }
 
         [HttpPost("{customerId}")]
