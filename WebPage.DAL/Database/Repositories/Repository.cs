@@ -21,6 +21,7 @@ namespace WebPage.DAL.Database.Repositories
 
         public virtual async Task<T> AddAsync(T obj)
         {
+            obj.Id = Guid.NewGuid().ToString();
             var entity = (await DbSet.AddAsync(obj)).Entity;
             return entity;
         }

@@ -26,42 +26,40 @@ namespace WebPage.API.Controllers
             //.ThenInclude(buyer=>buyer.Card)
             var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart=>cart.Items);
             var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
-            if (shoppingCart == null)
+            if (shoppingCart is null)
             {
-                shoppingCart = new ShoppingCart
-                {
-                    Buyer = buyer,
-                    Quantity = 0,
-                    TotalPrice = 0,
-                    Items = new List<ShopItem>()
-                };
-                shoppingCart = await UnitOfWork.ShoppingCarts.AddAsync(shoppingCart);
-                await UnitOfWork.CompleteAsync();
+                return NotFound("Missing ShoppingCart!");
             }
 
             return Ok(shoppingCart);
         }
 
-        /*[HttpPost("{id}")]
-        public async Task<IActionResult> AddToCart(string id)
+        [HttpPost("{customerId}")]
+        public async Task<ActionResult<ShoppingCart>> Post(string customerId, string shopItemId)
         {
-            /*var entity = await _unitOfWork.ShopItems.GetAsync(id);
-            if (id == null) return BadRequest("No item has this id");
-            _cart.TotalPrice += entity.Price;
-            _cart.Quantity += 1;
-            _cart.Items.Add(_mapper.Map<ShopItem>(entity));
-            return Ok();#1#
+            var buyer = await UnitOfWork.Customers.GetAsync(customerId);
+            if (buyer == null)
+            {
+                return BadRequest("BUYER IS NULL!");
+            }
+
+            //.ThenInclude(buyer=>buyer.Card)
+            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart => cart.Items);
+            var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
+            if (shoppingCart is null)
+            {
+                return NotFound("Missing ShoppingCart!");
+            }
+
+            var shopitem = await UnitOfWork.ShopItems.GetAsync(shopItemId);
+            if (shopitem is null)
+            {
+                return NotFound("Missing ShopItem!");
+            }
+            shoppingCart.Items.Add(shopitem);
+            await UnitOfWork.CompleteAsync();
+            return Ok(await queryable.FirstOrDefaultAsync(cart =>cart.Id == shoppingCart.Id));
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFromCart(string id)
-        {
-            /*var entity = await _unitOfWork.ShopItems.DeleteAsync(id);
-            if (id == null) return BadRequest("No item has this id");
-            _cart.TotalPrice -= entity.Price;
-            _cart.Quantity -= 1;
-            _cart.Items.Remove(_mapper.Map<ShopItem>(entity));
-            return Ok();#1#
-        }*/
     }
 }
