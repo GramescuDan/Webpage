@@ -36,7 +36,7 @@ namespace WebPage.API.Controllers
             return Ok(Mapper.Map<ShoppingCartDto>(shoppingCart));
         }
 
-        [HttpPost("{customerId}")]
+        [HttpPost("{customerId},{shopItemId}")]
         public async Task<ActionResult<ShoppingCart>> Post(string customerId, string shopItemId)
         {
             var buyer = await UnitOfWork.Customers.GetAsync(customerId);
@@ -60,8 +60,32 @@ namespace WebPage.API.Controllers
             }
             shoppingCart.Items.Add(shopitem);
             await UnitOfWork.CompleteAsync();
-            return Ok(await queryable.FirstOrDefaultAsync(cart =>cart.Id == shoppingCart.Id));
+            return Ok(Mapper.Map<ShoppingCartDto>(await queryable.FirstOrDefaultAsync(cart =>cart.Id == shoppingCart.Id)));
         }
 
+        [HttpDelete("{customerId},{shopItemId}")]
+        public async Task<ActionResult<ShoppingCart>> Delete(string customerId, string shopItemId)
+        {
+            var buyer = await UnitOfWork.Customers.GetAsync(customerId);
+            if (buyer == null)
+            {
+                return BadRequest("BUYER IS NULL!");
+            }
+            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart => cart.Items);
+            var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
+            if (shoppingCart is null)
+            {
+                return NotFound("Missing ShoppingCart!");
+            }
+            var shopitem = await UnitOfWork.ShopItems.GetAsync(shopItemId);
+            if (shopitem is null)
+            {
+                return NotFound("Missing ShopItem!");
+            }
+
+            shoppingCart.Items.Remove(shopitem);
+            await UnitOfWork.CompleteAsync();
+            return Ok(Mapper.Map<ShoppingCartDto>(shoppingCart));
+        }
     }
 }
