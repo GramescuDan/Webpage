@@ -20,6 +20,7 @@ namespace WebPage.DAL.Database
             Subscribers = new SubscriberRepository(_context);
             ShoppingCarts = new ShoppingCartRepository(_context);
             Customers = new CustomerRepository(_context);
+            Orders = new OrderRepository(_context);
         }
 
         public void Dispose()
@@ -31,7 +32,7 @@ namespace WebPage.DAL.Database
         public IArticleRepository Articles { get; }
         public IShopItemRepository ShopItems { get; }
         public ISubscriberRepository Subscribers { get; }
-        
+        public IOrderRepository Orders { get; }
         public ICardRepository Cards { get; }
         public ICustomerRepository Customers { get; }
 

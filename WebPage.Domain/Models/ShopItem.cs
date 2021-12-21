@@ -14,6 +14,6 @@ namespace WebPage.Domain.Models
         public string NameItem { get; set; }
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
-        public ICollection<ShoppingCart> Carts { get; set; }
+        public Order order { get; set; }
     }
 }

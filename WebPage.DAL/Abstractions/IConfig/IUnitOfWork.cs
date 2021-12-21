@@ -11,7 +11,8 @@ namespace WebPage.DAL.Abstractions.IConfig
         ISubscriberRepository Subscribers { get; }
         IShoppingCartRepository ShoppingCarts { get; }
         ICustomerRepository Customers { get; }
-
+        
+        IOrderRepository Orders { get; }
         Task CompleteAsync();
     }
 }
