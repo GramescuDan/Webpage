@@ -31,7 +31,6 @@ namespace WebPage.API.Controllers
                     Items = new List<ShopItem>()
                 };
                 await UnitOfWork.ShoppingCarts.AddAsync(shoppingCart);
-                await UnitOfWork.CompleteAsync();
             }
             
             await UnitOfWork.CompleteAsync();

@@ -44,7 +44,7 @@ namespace WebPage.API.Controllers
             }
 
             //.ThenInclude(buyer=>buyer.Card)
-            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart => cart.Items);
+            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).ThenInclude(buyer=>buyer.CustomerCard).Include(cart => cart.Items);
             var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
             if (shoppingCart is null)
             {
@@ -69,7 +69,7 @@ namespace WebPage.API.Controllers
             {
                 return BadRequest("BUYER IS NULL!");
             }
-            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).Include(cart => cart.Items);
+            var queryable = UnitOfWork.ShoppingCarts.DbSet.Include(cart => cart.Buyer).ThenInclude(buyer=>buyer.CustomerCard).Include(cart => cart.Items);
             var shoppingCart = await queryable.FirstOrDefaultAsync(cart => cart.Buyer.Id == customerId);
             if (shoppingCart is null)
             {
