@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using WebPage.DAL.Abstractions.IConfig;
 using WebPage.DAL.Abstractions.IRepositories;
@@ -13,6 +14,7 @@ namespace WebPage.DAL.Database
         public UnitOfWork(WebDbContext context)
         {
             _context = context;
+            Cards = new CardRepository(_context);
             Articles = new ArticleRepository(_context);
             ShopItems = new ShopItemRepository(_context);
             Subscribers = new SubscriberRepository(_context);
@@ -30,6 +32,7 @@ namespace WebPage.DAL.Database
         public IShopItemRepository ShopItems { get; }
         public ISubscriberRepository Subscribers { get; }
         
+        public ICardRepository Cards { get; }
         public ICustomerRepository Customers { get; }
 
         public async Task CompleteAsync()

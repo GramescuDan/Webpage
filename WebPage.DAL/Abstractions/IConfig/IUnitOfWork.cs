@@ -5,6 +5,7 @@ namespace WebPage.DAL.Abstractions.IConfig
 {
     public interface IUnitOfWork
     {
+        ICardRepository Cards { get; }
         IArticleRepository Articles { get; }
         IShopItemRepository ShopItems { get; }
         ISubscriberRepository Subscribers { get; }

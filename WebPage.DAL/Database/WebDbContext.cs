@@ -15,5 +15,6 @@ namespace WebPage.DAL.Database
         public DbSet<ShopItem> ShopItems { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Card> Cards { get; set; }
     }
 }

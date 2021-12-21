@@ -62,6 +62,7 @@ namespace WebPage.API.Controllers
             oldentity.Postalcode = changedCustomer.Postalcode;
             oldentity.Surname = changedCustomer.Surname;
             oldentity.PhoneNr = changedCustomer.PhoneNr;
+            oldentity.CustomerCard = changedCustomer.CustomerCard;
             
             await UnitOfWork.CompleteAsync();
             return Ok(oldentity);

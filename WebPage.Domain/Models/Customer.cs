@@ -18,6 +18,6 @@ namespace WebPage.Domain.Models
         public string Country { get; set; }
         public string Postalcode { get; set; }
         
-        //public Card CustomerCard { get; set; }
+        public Card CustomerCard { get; set; }
     }
 }
