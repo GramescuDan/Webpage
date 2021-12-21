@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Reflection;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +39,46 @@ namespace WebPage.API.Controllers
             
             return Created($"api/customer/{entity.Id}", entity);
         }
+
+        [HttpPatch]
+        public async Task<ActionResult<Customer>> Patch(string oldCustemer,[FromBody] Customer changedCustomer )
+        {
+            var oldentity = await UnitOfWork.Customers.GetAsync(oldCustemer);
+            if (oldentity == null)
+            {
+                return NotFound("This customer does not exist!");
+            }
+
+            if (changedCustomer == null)
+            {
+                return BadRequest("The customer is null");
+            }
+            //very bad practice
+            oldentity.Address = changedCustomer.Address;
+            oldentity.Age = changedCustomer.Age;
+            oldentity.Country = changedCustomer.Country;
+            oldentity.Email = changedCustomer.Email;
+            oldentity.Name = changedCustomer.Name;
+            oldentity.Postalcode = changedCustomer.Postalcode;
+            oldentity.Surname = changedCustomer.Surname;
+            oldentity.PhoneNr = changedCustomer.PhoneNr;
+            
+            await UnitOfWork.CompleteAsync();
+            return Ok(oldentity);
+        }
         
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult<Customer>> Get(string id)
+        {
+            var result = await UnitOfWork.Customers.GetAsync(id);
+            if (result == null)
+            {
+                return NotFound("This customer does not exist");
+            }
+
+            return Ok(result);
+        }
+
     }
 }
