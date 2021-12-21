@@ -9,7 +9,6 @@ using WebPage.Infrastructure.SendGrid;
 
 namespace WebPage.API.Controllers
 {
-    [Route("/api/[controller]")]
     public class SubscriberController:ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -26,7 +25,7 @@ namespace WebPage.API.Controllers
             email.Id = Guid.NewGuid().ToString();
             var entity= await _unitOfWork.Subscribers.AddAsync(email);
             await _unitOfWork.CompleteAsync();
-            return Created("http://localhost:5000/Subscribers/Get", entity);
+            return Created($"api/subscriber/{entity.Id}", entity);
         }
 
         [HttpGet]
