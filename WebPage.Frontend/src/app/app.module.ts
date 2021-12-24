@@ -9,6 +9,7 @@ import { TextButtonComponent } from './Components/text-button/text-button.compon
 import { MainPageComponent } from './Components/main-page/main-page.component';
 import { LineComponent } from './Components/line/line.component';
 import { PreorderbuttonComponent } from './Components/preorderbutton/preorderbutton.component';
+import { BackgroundImageComponent } from './background-image/background-image.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PreorderbuttonComponent } from './Components/preorderbutton/preorderbut
     MainPageComponent,
     LineComponent,
     PreorderbuttonComponent,
+    BackgroundImageComponent,
   ],
   imports: [
     BrowserModule,
