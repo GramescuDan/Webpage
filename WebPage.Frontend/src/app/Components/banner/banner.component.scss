@@ -1,0 +1,12 @@
+.banner{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.banner-text{
+  margin: 0 0 ;
+  font-size: 48px;
+  font-family: Prompt;
+  height: 44px;
+}
