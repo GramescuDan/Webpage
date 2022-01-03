@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-svg-button',
@@ -7,6 +7,6 @@ import { Component} from '@angular/core';
 })
 export class SvgButtonComponent {
 
-  constructor() { }
+  @Input() hrefId = ' ';
 
 }

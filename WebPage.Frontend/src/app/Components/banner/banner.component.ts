@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
 export class BannerComponent {
 
   @Input() banner = "BannerName";
+  @Input() Id = "#";
 
 }

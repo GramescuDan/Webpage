@@ -1,10 +1,21 @@
 <app-background-image></app-background-image>
 <app-menu></app-menu>
 <div style="  height: 80vh"></div>
-<app-banner [banner]="' '"></app-banner>
+
+<div style="display: flex;align-items: center; flex-direction: column">
+  <app-text-line></app-text-line>
+  <p style="display: flex ;width: 85vh;height: 9vh">
+    &emsp; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+  </p>
+  <app-text-line ></app-text-line>
+</div>
+
+
 <div style="  height: 70vh"></div>
-<app-banner [banner]="'NEWS'"></app-banner>
-<div style="  height: 70vh"></div>
-<app-banner [banner]="'SHOP'"></app-banner>
-<div style="  height: 70vh"></div>
-<app-banner [banner]="'FAQ'"></app-banner>
+<app-banner [banner]="'NEWS'" id="News"></app-banner>
+<div style="  height: 90vh"></div>
+<app-banner [banner]="'SHOP'" id="Shop"></app-banner>
+<div style="  height: 90vh"></div>
+<app-banner [banner]="'FAQ'" id="Faq"></app-banner>
+<div style="height: 90vh"></div>

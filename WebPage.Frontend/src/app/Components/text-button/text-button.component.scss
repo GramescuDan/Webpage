@@ -1,11 +1,24 @@
 a {
   text-decoration: none;
   color: #FFE5DB;
+  background: linear-gradient(
+      to bottom,
+      transparent 100%,
+      #FFE5DB 0%
+  );
+  transition: 10s;
 }
 :host{
   flex-direction: column;
   display: flex;
   justify-content: center;
+
 }
 
 
+.text-button:hover{
+  background: linear-gradient(
+      to bottom,
+      transparent 91%,
+      #FFE5DB 9%);
+}

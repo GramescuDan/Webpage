@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class TextButtonComponent {
 
   @Input() text="Submit";
-  @Input() hrefId = "#" ;
+  @Input() hrefId = " " ;
 
 
 }
