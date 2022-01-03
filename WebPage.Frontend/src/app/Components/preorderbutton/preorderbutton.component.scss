@@ -11,16 +11,15 @@
   border-color: #630000;
   background: none;
   border-radius:20px;
-  width: 100%;
+  width: 200%;
   padding: 3% 3%;
 
   box-shadow: inset 0 0 0 0 #FFE5DB;
   transition: ease-out 0.3s;
   outline: none;
 }
-.preorder-button:hover{
+.preorder-button:hover {
   box-shadow: inset 100px 0 100px 100px #FFE5DB;
   border-color: #FFE5DB;
-  font-size: 14px;
 }
 

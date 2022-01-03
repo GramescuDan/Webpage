@@ -1,10 +1,28 @@
 .backimage{
-  position: fixed;
-  left: -7%;
+  position: absolute;
+  background-position: 0px  0px;
+  left:-7%;
   right: 0;
   top: -7%;
   bottom: 0;
-  width: 110%;
-  height: 110%;
+ width: 107.4%;
+  height: 160%;
   z-index: -1;
+}
+.imagestack{
+  display: grid;
+  grid-template-columns:repeat(10,2fr) ;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  align-items: stretch;
+}
+.image_bottom{
+  grid-column: 2 / -2;
+  grid-row: 1;
+}
+.text-top{
+  grid-column: 4/-4;
+  grid-row: 2;
+  z-index: 1;
 }
