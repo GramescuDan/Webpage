@@ -12,6 +12,7 @@ import { PreorderbuttonComponent } from './Components/preorderbutton/preorderbut
 import { BackgroundImageComponent } from './Components/background-image/background-image.component';
 import { TextLineComponent } from './Components/text-line/text-line.component';
 import { BannerComponent } from './Components/banner/banner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BannerComponent } from './Components/banner/banner.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

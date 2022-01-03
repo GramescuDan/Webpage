@@ -1,12 +1,13 @@
 a {
   text-decoration: none;
   color: #FFE5DB;
-  background: linear-gradient(
-      to bottom,
-      transparent 100%,
-      #FFE5DB 0%
-  );
-  transition: 10s;
+
+  background: linear-gradient(90deg,
+      #FFE5DB,
+    #FFE5DB)no-repeat left bottom;
+  background-size: 0% 3px;
+  transition: 0.2s;
+
 }
 :host{
   flex-direction: column;
@@ -17,8 +18,10 @@ a {
 
 
 .text-button:hover{
-  background: linear-gradient(
-      to bottom,
-      transparent 91%,
-      #FFE5DB 9%);
+  background: linear-gradient(90deg,
+    #FFE5DB,
+    #FFE5DB)no-repeat left bottom;
+  background-size: 100% 3px;
+  transition: 0.2s;
+
 }
