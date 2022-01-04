@@ -1,0 +1,15 @@
+<div style="display: flex;flex-direction: column;flex-wrap: wrap;align-content: center;padding-right: 12vh">
+<form class="example-form" >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label style="color:#FFE5DB;">Email</mat-label>
+    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+           placeholder="Your@mail.here" style="color:#FFE5DB;">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')" style="color:#FFE5DB;">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')" style="color:#FFE5DB;">
+      Email is required!
+    </mat-error>
+  </mat-form-field>
+</form>
+</div>

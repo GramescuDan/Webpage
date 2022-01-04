@@ -1,8 +1,8 @@
 
-<div style="display: flex; width: 814px;margin: auto">
+<div style="display: flex; width: 814px;margin: auto" *ngFor='let faq of faqs'>
   <mat-expansion-panel style="background: none; color: #FFE5DB;box-shadow: none;"
                        [class.mat-expansion-indicator::after]="false"
-                       *ngFor='let faq of faqs'>
+                       >
     <mat-expansion-panel-header class="overview" style="padding: 0 10px 0 0 ;">
       <mat-panel-title style="color: #FFE5DB; font-family: Prompt ">
         <div style="display: flex;flex-direction: column;width: 814px" >

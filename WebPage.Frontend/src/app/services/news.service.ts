@@ -8,8 +8,8 @@ import {IArticle} from "../models/article";
   providedIn: 'root'
 })
 
-export class FaqsService {
-  private readonly _apiUrl = environment.apiUrl + 'Article/Faqs';
+export class NewsService {
+  private readonly _apiUrl = environment.apiUrl + 'Article/News';
 
   constructor(
     private readonly _http: HttpClient

@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NewsSectionComponent } from './Components/news-section/news-section.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EmailFormComponent } from './Components/email-form/email-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -30,13 +33,16 @@ import { HttpClientModule } from '@angular/common/http';
     TextLineComponent,
     BannerComponent,
     NewsSectionComponent,
+    EmailFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

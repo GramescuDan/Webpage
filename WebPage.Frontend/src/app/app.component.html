@@ -17,13 +17,17 @@
 
 <div style="  height: 8vh"></div>
 <app-banner [banner]="'NEWS'" id="News"></app-banner>
-<app-news-section></app-news-section>
+<app-news-section [article]="'n'"></app-news-section>
+<p style="padding-top: 10vh;display: flex; align-items: center;flex-direction: column; font-size:16px">
+  If you would like to get notified when an article appears, enter your email down bellow!
+</p>
+<app-email-form></app-email-form>
 
 <div style="  height: 90vh"></div>
 <app-banner [banner]="'SHOP'" id="Shop"></app-banner>
 
 <div style="  height: 90vh"></div>
 <app-banner [banner]="'FAQ'" id="Faq"></app-banner>
-
+<app-news-section [article]="'f'"></app-news-section>
 <div style="height: 90vh"></div>
 
