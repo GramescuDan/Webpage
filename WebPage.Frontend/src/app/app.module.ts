@@ -14,8 +14,8 @@ import { TextLineComponent } from './Components/text-line/text-line.component';
 import { BannerComponent } from './Components/banner/banner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { ArticlesComponent } from './Components/articles/articles.component';
-import {HttpClientModule} from "@angular/common/http";
+import { NewsSectionComponent } from './Components/news-section/news-section.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import {HttpClientModule} from "@angular/common/http";
     BackgroundImageComponent,
     TextLineComponent,
     BannerComponent,
-    ArticlesComponent,
+    NewsSectionComponent,
   ],
   imports: [
     BrowserModule,
