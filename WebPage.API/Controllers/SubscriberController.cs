@@ -9,6 +9,7 @@ using WebPage.Infrastructure.SendGrid;
 
 namespace WebPage.API.Controllers
 {
+    [Route("/api/[controller]")]
     public class SubscriberController:ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
