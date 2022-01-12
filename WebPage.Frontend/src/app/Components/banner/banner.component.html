@@ -1,4 +1,10 @@
 <div class="banner">
-  <div class="banner-text"> <strong>{{banner}}</strong> </div>
+
+  <div class="banner-text" style="display: flex">
+    <strong>{{banner}} </strong>
+      <app-svg-button *ngIf="buttonState" [image]="'../../assets/Images/cart.svg'" [hrefId]="'#Shop'" style="display: inline-block;padding-left: 78%">
+      </app-svg-button>
+  </div>
   <app-text-line [img]="'../../../assets/Images/Line2.svg'"></app-text-line>
+
 </div>

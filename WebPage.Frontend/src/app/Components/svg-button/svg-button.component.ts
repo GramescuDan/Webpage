@@ -8,5 +8,5 @@ import {Component, Input} from '@angular/core';
 export class SvgButtonComponent {
 
   @Input() hrefId = ' ';
-
+  @Input() image = '';
 }

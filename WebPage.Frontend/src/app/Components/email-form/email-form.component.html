@@ -1,5 +1,5 @@
 <div style="display: flex;flex-direction: column;flex-wrap: wrap;align-content: center;padding-right: 12vh">
-  <form (submit)="postSubscriber()" class="example-form" ><button  (click)="postSubscriber()" type="button"></button>
+  <form (submit)="postSubscriber()" class="example-form" >
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label style="color:#FFE5DB;">Email</mat-label>
     <input id ="EmailForm" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"

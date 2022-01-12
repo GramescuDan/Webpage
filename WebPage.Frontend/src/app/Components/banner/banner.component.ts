@@ -9,5 +9,6 @@ export class BannerComponent {
 
   @Input() banner = "BannerName";
   @Input() Id = "#";
+  @Input() buttonState: boolean= false;
 
 }
