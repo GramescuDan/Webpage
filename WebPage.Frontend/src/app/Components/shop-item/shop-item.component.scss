@@ -1,32 +1,50 @@
 .rectangle {
-
-  background-image:linear-gradient( transparent 80%, #E4C8BC 20%),url("../../../assets/Images/ShopItem1.jpg");
-  background-repeat:no-repeat;
+ background-image:linear-gradient( transparent 90%, #E4C8BC 5%), url("../../../assets/Images/ShopItem1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 250px 370px;
   display: flex;
   color:#630000;
   flex-direction: column;
   margin-top: 5px;
   height: 350px;
     width: 200px;
-
   border-radius: 30px;
   padding: 10px;
-  transition: ease-in 0.5s;
+  transition: 0.2s;
 }
 
 .shop-item-text{
-  transition: ease-in 0.5s;
   display: flex;
   padding-top: 85%;
   padding-left: 7%;
   height: 10%;
+
 }
 
 .buy-now{
   top:150%;
+  width:90%;
   padding: 6px;
   border-radius: 30px;
   background: #630000;
   color:#FFE5DB;
+  opacity: 0;
   border:none;
+}
+.all-text{
+  transform: translateY(49%);
+}
+.rectangle:hover .buy-now{
+  opacity: 1;
+  color:#FFE5DB;
+  transition: ease-in 0.4s;
+}
+.rectangle:hover{
+  background-image:linear-gradient( transparent 45%, #E4C8BC 5%), url("../../../assets/Images/ShopItem1.jpg");
+  transition: 0.5s;
+}
+.rectangle:hover .all-text{
+  transform: translateY(0%);
+  transition: ease-out 0.4s;
 }
