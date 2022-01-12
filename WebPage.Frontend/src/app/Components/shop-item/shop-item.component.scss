@@ -1,0 +1,32 @@
+.rectangle {
+
+  background-image:linear-gradient( transparent 80%, #E4C8BC 20%),url("../../../assets/Images/ShopItem1.jpg");
+  background-repeat:no-repeat;
+  display: flex;
+  color:#630000;
+  flex-direction: column;
+  margin-top: 5px;
+  height: 350px;
+    width: 200px;
+
+  border-radius: 30px;
+  padding: 10px;
+  transition: ease-in 0.5s;
+}
+
+.shop-item-text{
+  transition: ease-in 0.5s;
+  display: flex;
+  padding-top: 85%;
+  padding-left: 7%;
+  height: 10%;
+}
+
+.buy-now{
+  top:150%;
+  padding: 6px;
+  border-radius: 30px;
+  background: #630000;
+  color:#FFE5DB;
+  border:none;
+}

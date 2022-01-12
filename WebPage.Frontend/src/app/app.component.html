@@ -25,7 +25,12 @@
 <app-email-form></app-email-form>
 
 <div style="  height: 90vh"></div>
-<app-banner [buttonState]="true" [banner]="'SHOP'" id="Shop"></app-banner>
+<div style="display: flex;justify-content: center;flex-direction: column; flex-wrap: wrap;align-content: center">
+  <app-banner [buttonState]="true" [banner]="'SHOP'" id="Shop"></app-banner>
+  <app-shop-item></app-shop-item>
+</div>
+
+
 
 
 
@@ -33,5 +38,8 @@
 <div style="  height: 90vh"></div>
 <app-banner [banner]="'FAQ'" id="Faq"></app-banner>
 <app-news-section [article]="'f'"></app-news-section>
-<div style="height: 90vh"></div>
+<div style="height: 40vh"></div>
+<div style="display: flex;align-content: center;justify-content: center">
+  <img  src="../assets/Images/hand-footer.png" style="width : 100%;">
+</div>
 

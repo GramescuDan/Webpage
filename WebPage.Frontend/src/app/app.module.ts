@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmailFormComponent } from './Components/email-form/email-form.component';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ShopItemComponent } from './Components/shop-item/shop-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     BannerComponent,
     NewsSectionComponent,
     EmailFormComponent,
+    ShopItemComponent,
   ],
   imports: [
     BrowserModule,
