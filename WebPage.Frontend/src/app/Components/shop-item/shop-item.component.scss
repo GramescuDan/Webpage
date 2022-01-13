@@ -1,5 +1,7 @@
+:root{
+  --xxx: 90%
+}
 .rectangle {
- background-image:linear-gradient( transparent 90%, #E4C8BC 5%), url("../../../assets/Images/ShopItem1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 250px 370px;
@@ -40,9 +42,8 @@
   color:#FFE5DB;
   transition: ease-in 0.4s;
 }
-.rectangle:hover{
-  background-image:linear-gradient( transparent 45%, #E4C8BC 5%), url("../../../assets/Images/ShopItem1.jpg");
-  transition: 0.5s;
+.rectangle:hover {
+--xxx:45%;
 }
 .rectangle:hover .all-text{
   transform: translateY(0%);

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CustomerService} from "./services/customer.service";
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WebPage.Frontend';
+
+  constructor(private readonly _customerService : CustomerService) {
+  }
+  ngOnInit(): void {
+    this._customerService.post().subscribe();
+  }
 }

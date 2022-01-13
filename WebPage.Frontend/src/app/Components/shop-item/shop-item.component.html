@@ -1,22 +1,25 @@
-<div class="rectangle">
-  <div class="all-text">
-    <div class="shop-item-text" style="  display: flex;">
-      <p >
-      Nume
+<div style="display: flex;flex-direction: row; justify-content: center">
+<div *ngFor='let item of items' style="padding-left: 10px">
+  <div class="rectangle" [ngStyle]=" {'background-image':'linear-gradient( transparent var(--xxx), #E4C8BC 5%), url('+ item.photoUrl + ') '}">
+    <div class="all-text">
+      <div class="shop-item-text" style="  display: flex;">
+        <p>
+          {{item.nameItem}}
+        </p>
+       <p style="padding-left: 50%;">
+      {{item.price}}.9$
+       </p>
+    </div>
+      <div style="display: flex; flex-direction: column">
+       <p style="height:12vh">
+      {{item.description}}
       </p>
-     <p style="padding-left: 50%;">
-      Pret
-     </p>
-   </div>
-     <div style="display: flex; flex-direction: column">
-      <p style="height:12vh">
-      Descriere care sigur merge
-     </p>
+     </div>
     </div>
+      <div style="display: flex; align-content: center; justify-content: center">
+        <button  (click)="'addToCart(\''+item.id+'\')'" *ngIf="item.stock > 1" class="buy-now"> BUY NOW</button>
+        <button  *ngIf="item.stock < 1" class="buy-now"> Out of stock</button>
+      </div>
   </div>
-    <div style="display: flex; align-content: center; justify-content: center">
-      <button class="buy-now"> BUY NOW</button>
-    </div>
-
-
+</div>
 </div>
