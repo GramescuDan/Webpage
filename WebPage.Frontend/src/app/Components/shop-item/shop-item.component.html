@@ -1,6 +1,6 @@
 <div style="display: flex;flex-direction: row; justify-content: center">
 <div *ngFor='let item of items' style="padding-left: 10px">
-  <div class="rectangle" [ngStyle]=" {'background-image':'linear-gradient( transparent var(--xxx), #E4C8BC 5%), url('+ item.photoUrl + ') '}">
+  <div class="rectangle" [ngStyle]=" {'background-image':'linear-gradient( transparent var(--color,90%), #E4C8BC 5%), url('+ item.photoUrl + ') '}">
     <div class="all-text">
       <div class="shop-item-text" style="  display: flex;">
         <p>
@@ -17,7 +17,7 @@
      </div>
     </div>
       <div style="display: flex; align-content: center; justify-content: center">
-        <button  (click)="'addToCart(\''+item.id+'\')'" *ngIf="item.stock > 1" class="buy-now"> BUY NOW</button>
+        <button  (click)="addToCart(item.id)" *ngIf="item.stock > 1" class="buy-now"> BUY NOW</button>
         <button  *ngIf="item.stock < 1" class="buy-now"> Out of stock</button>
       </div>
   </div>

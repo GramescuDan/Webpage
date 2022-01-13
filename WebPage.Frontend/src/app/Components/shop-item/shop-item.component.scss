@@ -1,5 +1,5 @@
 :root{
-  --xxx: 90%
+  --color: 90%
 }
 .rectangle {
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@
   transition: ease-in 0.4s;
 }
 .rectangle:hover {
---xxx:45%;
+  --xxx:45%;
 }
 .rectangle:hover .all-text{
   transform: translateY(0%);
